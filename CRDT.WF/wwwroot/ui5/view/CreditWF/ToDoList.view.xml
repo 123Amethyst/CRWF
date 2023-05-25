@@ -1,0 +1,222 @@
+<mvc:View
+    height="100%"
+    controllerName="crdt.wf.ui5.controller.CreditWF.ToDoList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:tableHelp="custom.tableHelp">
+  <Page
+    showHeader="false" 
+    id="ToDoList">
+    <l:BlockLayout background="Dashboard" >
+      <l:BlockLayoutRow >
+        <l:BlockLayoutCell>
+          <Toolbar>
+            <Title id="ToDoList_Title" text="" />
+            <ToolbarSpacer/>
+            <Button
+                icon="sap-icon://download"
+                tooltip="{i18n>Buttons_Export}"
+                press="onExportTable"
+                class="DefaultButton AutoButton"/>
+            <Button
+                icon="sap-icon://synchronize"
+                tooltip="{i18n>Buttons_Refresh}"
+                press="onRefreshTable"
+                class="DefaultButton AutoButton"/>
+          </Toolbar>
+          <IconTabBar id="ToDoList_tabList" 
+                      items="{ path: 'ToDoList>/' }" 
+                      select="selectTab"
+                      backgroundDesign="Translucent"
+                      class="IconTabBarClass">
+            <items>
+              <IconTabFilter 
+                text="{ToDoList>name}" 
+                key="{ToDoList>code}">
+                <content>
+                  <!--单据条码扫描框-->
+                  <FlexBox
+                    renderType="List"
+                    alignItems="Center"
+                    wrap="Wrap"
+                    visible="{ToDoList>showBarcodeScanning}"
+                    class="FlexBoxClass">
+                    <VBox>
+                      <Label text="{i18n>ApprovalFlow_ToDoList_BarcodeScanning}:" labelFor="BarcodeScanning"/>
+                      <layoutData>
+                        <FlexItemData baseSize="9%" />
+                      </layoutData>
+                    </VBox>
+                    <VBox>
+                      <Input
+                      id="BarcodeScanning"
+                      name="BarcodeScanning"
+                      value=""
+                      autocomplete="false"
+                      class="InputClass"/>
+                      <layoutData>
+                        <FlexItemData baseSize="37%" />
+                      </layoutData>
+                    </VBox>
+                  </FlexBox>
+                  <tableHelp:TableFilter tableFor="ToDoListTable"
+                                          search="searchToDoListTable"/>
+                  <t:Table
+                    id="ToDoListTable"
+		                visibleRowCount="10"
+                    enableCellFilter="false"
+                    selectionMode="{ToDoList>show/selectionMode}"
+                    rowActionCount="2"
+                    fixedColumnCount="4"
+                    filter="filterCell"
+                    busy="{ToDoList>busy}"
+                    rows="{ path: 'ToDoList>list/' }"
+                    class="ToDoListTable TableClass">
+                    <t:customData>
+                      <core:CustomData key="tabFor" value="{ToDoList>code}"/>
+                    </t:customData>
+                    <t:rowActionTemplate>
+                      <t:RowAction>
+                        <t:items>
+                          <t:RowActionItem
+                            icon="sap-icon://signature"
+                            text="{i18n>Buttons_Operate}"
+                            press="onToDoList_Operate" />
+                          </t:items>
+                      </t:RowAction>
+                    </t:rowActionTemplate>
+                    <t:columns>
+                      <!--流程编号-->
+                      <t:Column width="11rem"
+                                showFilterMenuEntry="false"
+                                filterProperty="REQID"
+                                filterOperator="=,like"
+                                visible="{ToDoList>show/REQID}">
+                        <Label text="{i18n>ApprovalFlow_ToDoList_Table_Field_WorkFlowID}" />
+                        <t:template>
+                          <Text text="{ToDoList>REQID}"/>
+                        </t:template>
+                      </t:Column>
+                      <!--厂房-->
+                      <t:Column width="12rem"
+                                showFilterMenuEntry="false"
+                                filterProperty="PLANT" 
+                                filterType="\{type: 'sap.ui.model.type.Unit',constraints: \{model:'SingleSelect',bind:'Select>/PLANT_NAME_Select'\} \}" 
+                                visible="{ToDoList>show/PLANT_NAME}">
+                        <Label text="{i18n>ApprovalFlow_ToDoList_Table_Field_Plant}" />
+                        <t:template>
+                          <Text text="{ToDoList>PLANT_NAME}"/>
+                        </t:template>
+                      </t:Column>
+                      <!--表单操作-->
+                      <t:Column width="13rem"
+                                showFilterMenuEntry="false"
+                                filterProperty="APPTYPE" 
+                                filterType="\{type: 'sap.ui.model.type.Unit',constraints: \{model:'SingleSelect',bind:'Select>/ACTION_NAME_Select'\} \}"
+                                visible="{ToDoList>show/ACTION}">
+                        <Label text="{i18n>ApprovalFlow_ToDoList_Table_Field_ApplicationAction}" />
+                        <t:template>
+                          <Text text="{ToDoList>ACTION}"/>
+                        </t:template>
+                      </t:Column>
+                      <!--申请人-->
+                      <t:Column width="12rem"
+                                showFilterMenuEntry="false"
+                                filterProperty="CLAIM_USER"
+                                filterType="\{type: 'sap.ui.model.type.Unit',
+                                constraints: \{model:'TableSelect',
+                                value:'\{CLAIM_USER>/Account\}',
+                                showValue:'\{CLAIM_USER>/AccountName\}',
+                                tableTitle:'\{i18n>TableSelect_Initiation_Title\}',
+                                tableBinds:'\{\'Account\':\'CLAIM_USER>/Account\',\'AccountName\':\'CLAIM_USER>/AccountName\'\}',
+                                colsBind:['Account','AccountName'],
+                                colsWidth:['15rem','auto'],
+                                colsShow:['\{i18n>TableSelect_Initiation_Field0\}','\{i18n>TableSelect_Initiation_Field1\}'],
+                                url:'/ApprovalFlow/GetUserDDList',
+                                attachedData:\{bukrs:'@@_sysInfo>/CurrentUser/Company','userType':'ApplicantUser'\}\} \}"
+                                visible="{ToDoList>show/CLAIM_USER}">
+                        <Label text="{i18n>ApprovalFlow_ToDoList_Table_Field_Applicant}" />
+                        <t:template>
+                          <Text text="{ToDoList>CLAIM_USER}-{ToDoList>CLAIM_USER_NAME}"/>
+                        </t:template>
+                      </t:Column>
+                      <!--审批节点-->
+                      <t:Column width="12rem"
+                                showFilterMenuEntry="false"
+                                filterProperty="ACTNM"
+                                visible="{ToDoList>show/ACTNM}">
+                        <Label text="{i18n>ApprovalFlow_ToDoList_Table_Field_ApprovalStep}" />
+                        <t:template>
+                          <Text text="{ToDoList>ACTNM}"/>
+                        </t:template>
+                      </t:Column>
+                      <!--当前审批人-->
+                      <t:Column width="10rem"
+                                showFilterMenuEntry="false"
+                                filterProperty="APPRO_USER_LIST"
+                                visible="{ToDoList>show/APPRO_USER_LIST}">
+                        <Label text="{i18n>ApprovalFlow_ToDoList_Table_Field_CurrentApprover}" />
+                        <t:template>
+                          <Text text="{ToDoList>APPRO_USER_LIST}"/>
+                        </t:template>
+                      </t:Column>
+                      <!--提交人-->
+                      <t:Column width="10rem"
+                                showFilterMenuEntry="false"
+                                filterProperty="CREATOR"
+                                filterType="\{type: 'sap.ui.model.type.Unit',
+                                constraints: \{model:'TableSelect',
+                                value:'\{CREATOR>/Account\}',
+                                showValue:'\{CREATOR>/AccountName\}',
+                                tableTitle:'\{i18n>TableSelect_Initiation_Title\}',
+                                tableBinds:'\{\'Account\':\'CREATOR>/Account\',\'AccountName\':\'CREATOR>/AccountName\'\}',
+                                colsBind:['Account','AccountName'],
+                                colsWidth:['15rem','auto'],
+                                colsShow:['\{i18n>TableSelect_Initiation_Field0\}','\{i18n>TableSelect_Initiation_Field1\}'],
+                                url:'/ApprovalFlow/GetUserDDList',
+                                attachedData:\{bukrs:'@@_sysInfo>/CurrentUser/Company','userType':'SubmitUser'\}\} \}"
+                                visible="{ToDoList>show/CREATOR}">
+                        <Label text="{i18n>ApprovalFlow_ToDoList_Table_Field_Initiator}" />
+                        <t:template>
+                          <Text text="{ToDoList>CREATOR}-{ToDoList>CREATOR_NAME}"/>
+                        </t:template>
+                      </t:Column>
+                      <!--创建日期-->
+                      <t:Column width="10rem"
+                                showFilterMenuEntry="false"
+                                filterType="\{type: 'sap.ui.model.type.Unit',constraints: \{type:'DateTime'\} \}"
+                                visible="{ToDoList>show/ERDAT}">
+                        <Label text="{i18n>ApprovalFlow_ToDoList_Table_Field_CreateDate}" />
+                        <t:template>
+                          <Text text="{ToDoList>ERDAT}"/>
+                        </t:template>
+                      </t:Column>
+                      <!--提交日期-->
+                      <t:Column width="10rem"
+                                showFilterMenuEntry="false"
+                                filterType="\{type: 'sap.ui.model.type.Unit',constraints: \{type:'DateTime'\} \}"
+                                visible="{ToDoList>show/UPDATE_DATE_TIME}">
+                        <Label text="{i18n>ApprovalFlow_ToDoList_Table_Field_SubmissionDate}" />
+                        <t:template>
+                          <Text text="{ToDoList>UPDATE_DATE_TIME}"/>
+                        </t:template>
+                      </t:Column>
+                    </t:columns>
+                    <t:footer>
+                      <tableHelp:TablePage tableFor="ToDoListTable"
+                                        loadTable="loadTablePage"/>
+                    </t:footer>
+                </t:Table>
+                </content>
+              </IconTabFilter>
+            </items>
+          </IconTabBar>
+        </l:BlockLayoutCell>
+      </l:BlockLayoutRow>
+    </l:BlockLayout>
+  </Page>
+</mvc:View>

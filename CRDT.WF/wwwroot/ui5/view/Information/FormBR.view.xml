@@ -1,0 +1,109 @@
+﻿<mvc:View
+  height="100%"
+  controllerName="crdt.wf.ui5.controller.Information.FormBR"
+  fieldGroupIds="header"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:u="sap.ui.unified"
+	xmlns:core="sap.ui.core">
+  <HBox class="HBoxClass">
+    <VBox>
+      <FlexBox
+        id="FormBR"
+        renderType="List"
+        alignItems="Center"
+        wrap="Wrap"
+        class="FlexBoxClass">
+      <!--BR信息-->
+      <VBox>
+        <OverflowToolbar style="Clear">
+          <ObjectHeader
+            icon="../../../img/bottle.png"
+            titleLevel="H2"
+            title="{i18n>FormBR_Title}"
+            class="ObjectHeaderClass" />
+        </OverflowToolbar>
+        <layoutData>
+          <FlexItemData baseSize="100%" />
+        </layoutData>
+      </VBox>
+        <!--BR名称-->
+        <VBox>
+          <Label text="{i18n>FormBR_Name}" labelFor="BRName"/>
+          <Input
+            id="BRName"
+            required="true"
+            name="INSTITUTE"
+            maxLength="60"
+            value="{FormData>/INSTITUTE}"
+            autocomplete="false"
+            class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--BR编号-->
+        <VBox>
+          <Label text="{i18n>FormBR_No}" labelFor="BRNo"/>
+          <Input
+            id="BRNo"
+            required="true"
+            name="IDNUMBER"
+            maxLength="40"
+            value="{FormData>/IDNUMBER}"
+            autocomplete="false"
+            class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--BR有效期自-->
+        <VBox>
+          <HBox>
+            <Label text="{i18n>FormBR_ValidFrom}" labelFor="BRValidFrom"/>
+          </HBox>
+          <DatePicker
+            id="BRValidFrom"
+            name="VALID_DATE_FROM"
+            required="true"
+            value="{FormData>/VALID_DATE_FROM}"
+            valueFormat="yyyy-MM-dd"
+            class="DatePickerClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--BR有效期至-->
+        <VBox>
+          <HBox>
+            <Label text="{i18n>FormBR_ValidTo}" labelFor="BRValidTo"/>
+          </HBox>
+          <DatePicker
+            id="BRValidTo"
+            name="VALID_DATE_TO"
+            required="true"
+            value="{FormData>/VALID_DATE_TO}"
+            valueFormat="yyyy-MM-dd"
+            class="DatePickerClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--ID-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="reqid"
+          visible="false"
+          value="{FormData>/REQID}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+    </FlexBox>
+    </VBox>
+  </HBox>
+</mvc:View>

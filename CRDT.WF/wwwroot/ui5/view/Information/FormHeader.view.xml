@@ -1,0 +1,172 @@
+﻿<mvc:View
+  height="100%"
+  controllerName="crdt.wf.ui5.controller.Information.FormHeader"
+  fieldGroupIds="header"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+  <HBox class="HBoxClass">
+    <VBox>
+      <FlexBox
+        id="FormHeader"
+        renderType="List"
+        alignItems="Center"
+        wrap="Wrap"
+        class="FlexBoxClass">
+      <!--单据抬头-->
+      <VBox>
+        <OverflowToolbar style="Clear">
+          <ObjectHeader
+            icon="../../../img/bottle.png"
+            titleLevel="H2"
+            title="{i18n>FormHeader_Title}"
+            class="ObjectHeaderClass" />
+        </OverflowToolbar>
+        <layoutData>
+          <FlexItemData baseSize="100%" />
+        </layoutData>
+      </VBox>
+      <!--厂房-->
+      <VBox>
+        <Label text="{i18n>FormHeader_Field0}" labelFor="Form0"/>
+        <Input 
+          id="Form0"
+          name="Plant"
+          value="{FormData>/Plant}"
+          enabled="false" 
+          autocomplete="false" 
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+        <!--表单流水号-->
+        <VBox>
+          <Label text="{i18n>FormHeader_Field4}" labelFor="Form4"/>
+          <Input
+            id="Form4"
+            name="FormNumber"
+            value="{FormData>/FormNumber}"
+            enabled="false"
+            autocomplete="false"
+            class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+      <!--申请部门-->
+      <VBox>
+        <Label text="{i18n>FormHeader_Field2}" labelFor="Form2"/>
+        <Input
+          id="Form2"
+          name="Department"
+          value="{FormData>/Department} - {FormData>/DepartmentName}"
+          enabled="false"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+        <!--表单操作-->
+        <VBox>
+          <Label text="{i18n>FormHeader_Field5}" labelFor="Form5"/>
+          <Input
+            id="Form5"
+            name="ApplicationAction"
+            value="{FormData>/ApplicationAction}"
+            enabled="false"
+            autocomplete="false"
+            class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--申请人-->
+        <VBox>
+          <Label text="{i18n>FormHeader_Field1}" labelFor="Form1"/>
+          <Input
+            id="Form1"
+            name="Applicant"
+            value="{FormData>/Applicant}"
+            enabled="false"
+            autocomplete="false"
+            class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--申请日期-->
+        <VBox>
+          <Label text="{i18n>FormHeader_Field6}" labelFor="Form6"/>
+          <Input
+            id="Form6"
+            name="ApplicationDate"
+            value="{FormData>/ApplicationDate}"
+            enabled="false"
+            autocomplete="false"
+            class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+      <!--职位-->
+      <VBox>
+        <Label text="{i18n>FormHeader_Field3}" labelFor="Form3"/>
+        <Input
+          id="Form3"
+          name="Position"
+          value="{FormData>/Position}"
+          enabled="false"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+        <!--提交人-->
+        <VBox>
+          <Label text="{i18n>FormHeader_Field7}" labelFor="Form7"/>
+          <Input
+            id="Form7"
+            name="Initiator"
+            value="{FormData>/Initiator}"
+            enabled="false"
+            autocomplete="false"
+            class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--申请说明-->
+        <VBox>
+          <Label text="{i18n>FormHeader_Field8}" labelFor="Form8"/>
+          <TextArea
+            id="Form8"
+            name="Details"
+            maxLength="200"
+            value="{FormData>/Details}"
+            change="changeFormHeader_Details"
+            class="TextAreaClass"/>
+          <layoutData>
+            <FlexItemData baseSize="98%" />
+          </layoutData>
+        </VBox>
+        <!--ID-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="reqid"
+          visible="false"
+          value="{FormData>/REQID}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+    </FlexBox>
+    </VBox>
+  </HBox>
+</mvc:View>

@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<CRDT.WF.Controllers.HomeController> Htmllocalizer
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Htmllocalizer["System_Title"]</title>
+
+    <script id="sap-ui-bootstrap"
+            src="~/ui5/resources/sap-ui-core.js"
+            data-sap-ui-theme="sap_fiori_3"
+            data-sap-ui-oninit="module:CacheBuster"
+            data-sap-ui-compatVersion="edge"
+            data-sap-ui-async="true"
+            data-sap-ui-frameOptions="trusted"
+            data-sap-ui-resourceroots='{"crdt.wf": "../../"}'></script>
+    <script>
+         sap.ui.getCore().attachInit(function () {
+            //let obj = htmlDecode('@ViewBag.data')
+             localStorage.removeItem('data');
+             localStorage.setItem('data', JSON.stringify(@Html.Raw(ViewBag.data)));
+             localStorage.setItem('CurrentUser', JSON.stringify(@Html.Raw(@ViewBag.CurrentUser)));
+        });
+        //html解码
+        function htmlDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+    </script>
+</head>
+<body id="content" class="ChineseRedStyle sapUiBody">
+    <div data-sap-ui-component data-name="crdt.wf.ui5" data-id="container" data-settings='{"id" : "ui5"}'></div>
+</body>
+</html>

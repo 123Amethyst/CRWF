@@ -1,0 +1,102 @@
+﻿<mvc:View
+  height="100%"
+  controllerName="crdt.wf.ui5.controller.Information.FormUpload"
+  fieldGroupIds="upload"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+  xmlns:t="sap.ui.table"
+  xmlns:u="sap.ui.unified">
+  <HBox class="HBoxClass">
+    <t:Table
+      id="Table_FormUpload"
+		  visibleRowCount="5"
+      selectionMode="None"
+      rows="{/TableData}"
+      rowActionCount="2"
+      class="TableClass">
+    <t:extension>
+        <OverflowToolbar id="FormUpload_Appendix_Toolbar" style="Clear" class="OverflowToolbarClass">
+        <ObjectHeader
+              icon="../../../img/bottle.png"
+              titleLevel="H2"
+              title="{i18n>FormUpload_Title}"
+              class="ObjectHeaderClass" />         
+        <ToolbarSpacer/>        
+        <u:FileUploader
+         id="fileUploader"
+         maximumFileSize="2"
+         tooltip="{i18n>FormUpload_Tooltip}"
+         uploadComplete="onUploadComplete"
+         class="FileUploaderClass"/>
+        <label text="{i18n>FormUpload_DocumentType}:"/>
+        <Select
+           id="DocType"
+           maxWidth="10%"
+           class="SelectClass"
+           items="{
+                   path: '/DocTypeModel'
+                 }">
+          <core:Item key="{DCODE}" text="{DNAME}"/>
+        </Select>
+        <Button id="Table_FormUpload_Buttons_Upload" text="{i18n>Buttons_Upload}" press="onFormUpload_Appendix_Upload" class="DefaultButton" width="80px"/>        
+        <!--<Button id="Table_FormUpload_Buttons_InsertAttachments" text="{i18n>Buttons_InsertAttachments}" press="onFormUpload_Appendix_Insert" class="DefaultButton" width="80px"/>-->
+      </OverflowToolbar>
+      <!--提示信息-->
+      <VBox>
+        <Label
+          id="UploadTip"
+          text="{i18n>xfld.FileUploadSizeTip}"
+          class="tips"/>
+        <layoutData>
+          <FlexItemData baseSize="15%" />
+        </layoutData>
+      </VBox>
+    </t:extension>
+    <t:rowActionTemplate>
+      <t:RowAction>
+        <t:items>
+          <t:RowActionItem
+            icon="sap-icon://download"
+            text="{i18n>Buttons_Download}"
+            press="onFormUpload_Appendix_DownLoad" />
+          <t:RowActionItem
+            id="Table_FormUpload_Delete"
+            type="Delete"
+            press="onFormUpload_Appendix_Delete" />
+        </t:items>
+      </t:RowAction>
+    </t:rowActionTemplate>
+    <t:columns>
+      <!--文件名称-->
+      <t:Column width="15rem">
+        <Label text="{i18n>FormUpload_Field0}" />
+        <t:template>
+          <Text text="{FileDesc}"/>
+        </t:template>
+      </t:Column>
+      <!--文件类型-->
+      <t:Column width="15rem">
+        <Label text="{i18n>FormUpload_Field3}" />
+        <t:template>
+          <Text text="{FileType}"/>
+        </t:template>
+      </t:Column>
+      <!--上传者-->
+      <t:Column width="15rem">
+        <Label text="{i18n>FormUpload_Field1}" />
+        <t:template>
+          <Text text="{ApproUserName}"/>
+        </t:template>
+      </t:Column>
+      <!--上传日期-->
+      <t:Column width="auto" minWidth="170">
+        <Label text="{i18n>FormUpload_Field2}" />
+        <t:template>
+          <Text text="{ApproDate}"/>
+        </t:template>
+      </t:Column>
+    </t:columns>
+  </t:Table>  
+  </HBox>
+</mvc:View>

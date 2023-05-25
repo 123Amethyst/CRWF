@@ -1,0 +1,703 @@
+﻿<mvc:View
+  height="100%"
+  controllerName="crdt.wf.ui5.controller.Information.FormUpdateVBAPayer"
+  fieldGroupIds="header"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:u="sap.ui.unified"
+	xmlns:core="sap.ui.core">
+  <HBox class="HBoxClass">
+    <VBox>
+      <FlexBox
+        id="FormPayer"
+        renderType="List"
+        alignItems="Center"
+        wrap="Wrap"
+        class="FlexBoxClass">
+      <!--付款人信息-->
+      <VBox>
+        <OverflowToolbar style="Clear">
+          <ObjectHeader
+            icon="../../../img/bottle.png"
+            titleLevel="H2"
+            title="{i18n>FormPayer_Title}"
+            class="ObjectHeaderClass" />
+        </OverflowToolbar>
+        <layoutData>
+          <FlexItemData baseSize="100%" />
+        </layoutData>
+      </VBox>
+       <!--客户编号-->
+      <VBox>
+        <Label text="{i18n>FormPayer_ReferenceBpNo}" labelFor="ReferenceBpNo"/>
+        <Input
+          id="ReferenceBpNo"
+          name="KUNNR"
+          maxLength="10"
+          value="{FormData>/KUNNR}"
+          required="true"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="70%" />
+        </layoutData>
+      </VBox>
+        <VBox>
+          <Label/>
+          <Button
+            id="BPSearch"
+            text="{i18n>xbut.Retrieve}"
+            press=".onBPNoSearch"
+            class="DefaultButton AutoButton"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--销售管理员-->
+        <VBox>
+          <Label text="{i18n>FormPayer_SalesAdmin}"  labelFor="SalesAdmin"/>
+          <Select
+           id="SalesAdmin"
+           width="245px"
+           name="SALES_ADMIN"
+           enabled="false"
+           required="true"
+           selectedKey="{FormData>/SALES_ADMIN}"
+           class="SelectClass Rimless"
+           items="{
+					    path: '/SalesAdminModel'
+				    }"
+          >
+            <core:Item key="{ZZSALESADMIN}" text="{ZZSANAME}"/>
+          </Select>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--销售管理员-->
+        <!--<VBox>
+          <Label text="{i18n>FormPayer_SalesAdmin}" />
+          <Select
+           id="SalesAdmin"
+           width="245px"
+           name="SALES_ADMIN"
+           enabled="false"
+           selectedKey="{FormData>/SALES_ADMIN}"
+           class="SelectClass Rimless"
+           items="{
+					    path: '/SalesAdminModel'
+				    }"
+          >
+            <core:Item key="{DCODE}" text="{DNAME}"/>
+          </Select>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>-->
+      <!--账单送至-->
+       <VBox>
+        <Label text="{i18n>FormPayer_BillTo}"/>
+        <Input
+          id="BillTo"
+          name="BILL_TO"
+          value="{FormData>/BILL_TO}"
+          enabled="false"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+       <!--公司编码-->
+       <VBox>
+        <Label text="{i18n>FormPayer_CompanyCode}"/>
+        <Input
+          id="CompanyCode"
+          name="BUKRS"
+          enabled="false"
+          value="{FormData>/BUKRS}-{FormData>/BUTXT}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+      <!--名称-->
+       <VBox>
+        <Label text="{i18n>FormPayer_Name1}" labelFor="Name1"/>
+        <Input
+          id="Name1"
+          name="NAME1"
+          maxLength="80"
+          required="true"
+          enabled="false"
+          value="{FormData>/NAME_ORG1}{FormData>/NAME_ORG2}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+       <!--中文名称-->
+       <VBox>
+        <Label text="{i18n>FormPayer_Name2}"/>
+        <Input
+          id="Name2"
+          name="NAME2"
+          maxLength="80"
+          enabled="false"
+          value="{FormData>/NAME1_SZF}{FormData>/NAME2_SZF}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+       <!--通迅地址1-->
+       <VBox>
+        <Label text="{i18n>FormPayer_CorrespondingAddress1}" labelFor="CorrespondingAddress1"/>
+        <Input
+          id="CorrespondingAddress1"
+          name="STREET1"
+          maxLength="60"
+          required="true"
+          enabled="false"
+          value="{FormData>/STREET1}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+       <!--通迅地址1(中文)-->
+       <VBox>
+        <Label text="{i18n>FormPayer_PostalAddress1}"/>
+        <Input
+          id="PostalAddress1"
+          name="STREET4"
+          maxLength="60"
+          enabled="false"
+          value="{FormData>/STREET4}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+       <!--通迅地址2-->
+       <VBox>
+        <Label text="{i18n>FormPayer_CorrespondingAddress2}" labelFor="CorrespondingAddress2"/>
+        <Input
+          id="CorrespondingAddress2"
+          name="STREET2"
+          maxLength="40"
+          required="true"
+          enabled="false"
+          value="{FormData>/STREET2}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+       <!--通迅地址2(中文)-->
+       <VBox>
+        <Label text="{i18n>FormPayer_PostalAddress2}"/>
+        <Input
+          id="PostalAddress2"
+          name="STREET5"
+          maxLength="40"
+          enabled="false"
+          value="{FormData>/STREET5}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+      <!--通迅地址3-->
+       <VBox>
+        <Label text="{i18n>FormPayer_CorrespondingAddress3}" labelFor="CorrespondingAddress3"/>
+        <Input
+          id="CorrespondingAddress3"
+          name="STREET3"
+          maxLength="40"
+          required="true"
+          enabled="false"
+          value="{FormData>/STREET3}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+       <!--通迅地址2(中文)-->
+       <VBox>
+        <Label text="{i18n>FormPayer_PostalAddress3}"/>
+        <Input
+          id="PostalAddress3"
+          name="STREET6"
+          maxLength="40"
+          enabled="false"
+          value="{FormData>/STREET6}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+      <!--报表收件人-->
+       <VBox>
+        <Label text="{i18n>FormPayer_Attention}" labelFor="Attention"/>
+        <Input
+          id="Attention"
+          name="ATTENTION1"
+          maxLength="30"
+          required="true"
+          enabled="false"
+          value="{FormData>/ATTENTION1}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+       <!--联系人声明名称-->
+       <VBox>
+        <Label text="{i18n>FormPayer_Addressee}"/>
+        <Input
+          id="Addressee"
+          name="ATTENTION2"
+          maxLength="40"
+          enabled="false"
+          value="{FormData>/ATTENTION2}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+      <!--联系人声明电话-->
+       <VBox>
+        <Label text="{i18n>FormPayer_Phone1}" labelFor="Phone1"/>
+        <Input
+          id="Phone1"
+          name="PHONE1"
+          maxLength="30"
+          required="true"
+          enabled="false"
+          value="{FormData>/PHONE1}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+       <!--扩展-->
+       <VBox>
+        <Label text="{i18n>FormPayer_Phone1Ext}"/>
+        <Input
+          id="Phone1Ext"
+          name="PHONE1_EXT"
+          maxLength="30"
+          enabled="false"
+          value="{FormData>/PHONE1_EXT}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+      <!--联系人声明电话-->
+       <VBox>
+        <Label text="{i18n>FormPayer_Phone2}"/>
+        <Input
+          id="Phone2"
+          name="PHONE2"
+          maxLength="30"
+          enabled="false"
+          value="{FormData>/PHONE2}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+       <!--扩展-->
+       <VBox>
+        <Label text="{i18n>FormPayer_Phone2Ext}"/>
+        <Input
+          id="Phone2Ext"
+          name="PHONE2_EXT"
+          maxLength="30"
+          enabled="false"
+          value="{FormData>/PHONE2_EXT}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+      <!--邮件1-->
+       <VBox>
+        <Label text="{i18n>FormPayer_Email1}" labelFor="Email1"/>
+        <Input
+          id="Email1"
+          name="EMAIL1"
+          maxLength="40"
+          required="true"
+          type="Email"
+          enabled="false"
+          value="{FormData>/EMAIL1}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+       <!--邮件2-->
+       <VBox>
+        <Label text="{i18n>FormPayer_Email2}"/>
+        <Input
+          id="Email2"
+          name="EMAIL2"
+          maxLength="40"
+          enabled="false"
+          type="Email"
+          value="{FormData>/EMAIL2}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+       <!--邮件3-->
+       <VBox>
+        <Label text="{i18n>FormPayer_Email3}"/>
+        <Input
+          id="Email3"
+          name="EMAIL3"
+          maxLength="40"
+          enabled="false"
+          type="Email"
+          value="{FormData>/EMAIL3}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+       <!--传真-->
+       <VBox>
+        <Label text="{i18n>FormPayer_Fax}"/>
+        <Input
+          id="Fax"
+          name="FAX"
+          maxLength="30"
+          enabled="false"
+          value="{FormData>/FAX}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+       <!--备注-->
+       <VBox>
+        <Label text="{i18n>FormPayer_Remark}"/>
+        <Input
+          id="Remark"
+          name="REMARK"
+          maxLength="200"
+          enabled="false"
+          value="{FormData>/REMARK}"
+          autocomplete="false"
+          class="InputClass"/>
+        <layoutData>
+          <FlexItemData baseSize="22%" />
+        </layoutData>
+      </VBox>
+        <!--ID-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="reqid"
+          visible="false"
+          value="{FormData>/REQID}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>        
+        <!--CHANNEL-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="Channel"
+          visible="false"
+          value="{FormData>/CHANNEL}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--SUBCHANNEL-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="SubChannel"
+          visible="false"
+          value="{FormData>/SUBCHANNEL}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--KVGR1-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="Kvgr1"
+          visible="false"
+          value="{FormData>/KVGR1}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--KACODE-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="KaCode"
+          visible="false"
+          value="{FormData>/KACODE}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--CHAINCUST-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="ChainCust"
+          visible="false"
+          value="{FormData>/CHAINCUST}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--KVGR2-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="Kvgr2"
+          visible="false"
+          value="{FormData>/KVGR2}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--VKORG-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="Vkorg"
+          visible="false"
+          value="{FormData>/VKORG}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--VWERK-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="Vwerk"
+          visible="false"
+          value="{FormData>/VWERK}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--KALKS-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="Kalks"
+          visible="false"
+          value="{FormData>/KALKS}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--WAERS-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="Waers"
+          visible="false"
+          value="{FormData>/WAERS}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--VSBED-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="Vsbed"
+          visible="false"
+          value="{FormData>/VSBED}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--LPRIO-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="Lprio"
+          visible="false"
+          value="{FormData>/LPRIO}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--KTGRD-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="Ktgrd"
+          visible="false"
+          value="{FormData>/KTGRD}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--CUSTSTATUS-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="CustStatus"
+          visible="false"
+          value="{FormData>/CUSTSTATUS}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--CUSTTYPE-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="CustType"
+          visible="false"
+          value="{FormData>/CUSTTYPE}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--DELTYPE-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="DelType"
+          visible="false"
+          value="{FormData>/DELTYPE}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--MATTYPE-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="MatType"
+          visible="false"
+          value="{FormData>/MATTYPE}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--DNCOPY-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="DnCopy"
+          visible="false"
+          value="{FormData>/DNCOPY}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        <!--DROUTE-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="DRoute"
+          visible="false"
+          value="{FormData>/DROUTE}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+    </FlexBox>
+    </VBox>
+  </HBox>
+</mvc:View>

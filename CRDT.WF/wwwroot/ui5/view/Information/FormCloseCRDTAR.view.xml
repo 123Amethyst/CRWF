@@ -1,0 +1,383 @@
+﻿<mvc:View
+  height="100%"
+  controllerName="crdt.wf.ui5.controller.Information.FormCloseCRDTAR"
+  fieldGroupIds="header"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:u="sap.ui.unified"
+	xmlns:core="sap.ui.core">
+  <HBox class="HBoxClass">
+    <VBox>
+      <FlexBox
+        id="FormAR"
+        renderType="List"
+        alignItems="Center"
+        wrap="Wrap"
+        class="FlexBoxClass">
+      <!--AR信息-->
+      <VBox>
+        <OverflowToolbar style="Clear">
+          <ObjectHeader
+            icon="../../../img/bottle.png"
+            titleLevel="H2"
+            title="{i18n>FormAR_Title}"
+            class="ObjectHeaderClass" />
+        </OverflowToolbar>
+        <layoutData>
+          <FlexItemData baseSize="100%" />
+        </layoutData>
+      </VBox>
+        <!--客户类型-->
+        <VBox>
+          <Label text="{i18n>FormAR_CustomerType}" labelFor="CustomerType"/>
+          <MultiComboBox
+          id="CustomerType"
+          required="true"
+          selectedKeys="{FormData>/CUST_TYPE}"
+          class="MultiComboBoxClass"
+          enabled="false"
+          items="{
+			        path: '/CustomerTypeModel'
+		        }"
+          selectionFinish="onCustomerTypeChange">
+            <core:Item key="{CORE_VALUE}" text="{VALUE_TEXT}"/>
+          </MultiComboBox>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--业务性质-->
+        <VBox>
+          <Label text="{i18n>FormAR_BusinessNature}" labelFor="BusinessNature"/>
+          <RadioButtonGroup id="BusinessNature" columns="2" class="sapUiMediumMarginBottom">
+		        <RadioButton id="EatDrink" text="Eating and Drinking" enabled="false"/>
+		        <RadioButton id="Other" text="Others" enabled="false"/>
+	        </RadioButtonGroup>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--信用期限-->
+        <VBox>
+          <Label text="{i18n>FormAR_CreditTerm}" labelFor="CreditTerm"/>
+          <Select
+            id="CreditTerm"
+            required="true"
+            enabled="false"
+            class="SelectClass Rimless"
+            selectedKey="{FormData>/CREDIT_TERM}"
+            items="{
+					    path: '/CreditTermModel'
+				    }">
+            <core:Item key="{DCODE}" text="{DNAME}"/>
+          </Select>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--保证金-->
+        <VBox>
+          <Label text="{i18n>FormAR_SecDeposit}"  labelFor="SecDeposit"/>
+          <Input
+            id="SecDeposit"
+            type="Number"
+            name="SEC_DEPOSIT"
+            enabled="false"
+            value="{FormData>/SEC_DEPOSIT}"
+            required="true"
+            autocomplete="false"
+            class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--信用额度-->
+        <VBox>
+          <Label text="{i18n>FormAR_CreditLimit}"  labelFor="CreditLimit"/>
+          <Input
+            id="CreditLimit"
+            type="Number"
+            name="CREDIT_LIMIT"
+            enabled="false"
+            value="{FormData>/CREDIT_LIMIT}"
+            required="true"
+            autocomplete="false"
+            class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--报表打印选项-->
+        <VBox>
+          <Label text="{i18n>FormAR_StaPrintOpt}" labelFor="StaPrintOpt"/>
+          <Select
+            id="StaPrintOpt"
+            width="245px"
+            required="true"
+            enabled="false"
+            class="SelectClass Rimless"
+            selectedKey="{FormData>/PRTOPT}"
+            items="{
+					    path: '/StatePrintModel'
+				    }">
+            <core:Item key="{DCODE}" text="{DNAME}"/>
+          </Select>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--银行保函到期日-->
+        <VBox>
+          <HBox>
+            <Label text="{i18n>FormAR_BankGurExpDate}" labelFor="BankGurExpDate"/>
+          </HBox>
+          <DatePicker
+            id="BankGurExpDate"
+            required="true"
+            name="BANKGUR_EXPDATE"
+            enabled="false"
+            value="{FormData>/BANKGUR_EXPDATE}"
+            valueFormat="yyyy-MM-dd"
+            class="DatePickerClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--汇总发票打印时间-->
+        <VBox>
+          <Label text="{i18n>FormAR_SumInvoicePrintTime}" labelFor="SumInvoicePrintTime"/>
+          <Select
+            id="SumInvoicePrintTime"
+            width="245px"
+            required="true"
+            enabled="false"
+            class="SelectClass Rimless"
+            selectedKey="{FormData>/PERRL}"
+            items="{
+					    path: '/SumInvoicePrintTimeModel'
+				    }">
+            <core:Item key="{DCODE}" text="{DNAME}"/>
+          </Select>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--信用证到期日-->
+        <VBox>
+          <HBox>
+            <Label text="{i18n>FormAR_CreditExpDate}"/>
+          </HBox>
+          <DatePicker
+            id="CreditExpDate"
+            name="VALID_TO"
+            enabled="false"
+            value="{FormData>/VALID_TO}"
+            valueFormat="yyyy-MM-dd"
+            class="DatePickerClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--信贷经理-->
+        <VBox>
+          <Label text="{i18n>FormAR_CreditManager}" labelFor="CreditManager"/>
+          <Select
+            id="CreditManager"
+            width="245px"
+            enabled="false"
+            required="true"
+            class="SelectClass Rimless"
+            selectedKey="{FormData>/CRMANAGER}"
+            items="{
+					    path: '/CreditManagerModel'
+				    }">
+            <core:Item key="{ZZCRMANAGER}" text="{ZZCRNAME}"/>
+          </Select>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--信贷经理-->
+        <!--<VBox>
+          <Label text="{i18n>FormAR_CreditManager}" labelFor="CreditManager"/>
+          <Select
+            id="CreditManager"
+            width="245px"
+            enabled="false"
+            required="true"
+            class="SelectClass Rimless"
+            selectedKey="{FormData>/CRMANAGER}"
+            items="{
+					    path: '/CreditManagerModel'
+				    }">
+            <core:Item key="{DCODE}" text="{DNAME}"/>
+          </Select>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>-->
+        <!--存款参考号-->
+        <VBox>
+          <Label text="{i18n>FormAR_DepRefNo}"/>
+          <Input
+            id="DepRefNo"
+            name="DEPOSIT_REF_NO"
+            maxLength="20"
+            enabled="false"
+            value="{FormData>/DEPOSIT_REF_NO}"
+            autocomplete="false"
+            class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--相关付款人编号-->
+        <VBox>
+          <Label text="{i18n>FormAR_RelatedPayerNo}" />
+          <Input
+            id="RelatedPayerNoOrKAAccountNo"
+            name="PAYER_NO"
+            maxLength="30"
+            enabled="false"
+            value="{FormData>/PAYER_NO}"
+            autocomplete="false"
+            class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--担保-->
+        <VBox>
+          <Label text="{i18n>FormAR_Security}"/>
+          <RadioButtonGroup id="Security"  columns="5" class="sapUiMediumMarginBottom">
+            <RadioButton id="BankGuarantee" text="Bank Guarantee" enabled="false"/>
+            <RadioButton id="Cash" text="Cash" enabled="false"/>
+            <RadioButton id="Cheque" text="Cheque" enabled="false"/>
+            <RadioButton id="Others" text="Others" enabled="false"/>
+            <RadioButton id="Waived" text="Waived" enabled="false"/>
+          </RadioButtonGroup>
+          <layoutData>
+            <FlexItemData baseSize="46%" />
+          </layoutData>
+        </VBox>
+        <!--对账账户-->
+        <VBox>
+          <Label id="ReconciliationAccountLabel" text="{i18n>FormAR_ReconciliationAccount}" labelFor="ReconciliationAccount"/>
+          <Select
+            id="ReconciliationAccount"
+            width="245px"
+            required="true"
+            enabled="false"
+            class="SelectClass Rimless"
+            selectedKey="{FormData>/AKONT}"
+            items="{
+					    path: '/RecAccountModel'
+				    }"
+            change="onRecAccountChange">
+            <core:Item key="{DCODE}" text="{DNAME}({DCODE})"/>
+          </Select>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--风险等级-->
+        <VBox>
+          <Label id="RiskClassLabel" text="{i18n>FormAR_RiskClass}" labelFor="RiskClass"/>
+          <Select
+            id="RiskClass"
+            width="245px"
+            required="true"
+            visible="false"
+            enabled="false"
+            class="SelectClass Rimless"
+            selectedKey="{FormData>/RISK_CLASS}"
+            items="{
+					    path: '/RiskClassModel'
+				    }">
+            <core:Item key="{CORE_VALUE}" text="{VALUE_TEXT}"/>
+          </Select>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--检查规则-->
+        <VBox>
+          <Label id="CheckRuleLabel" text="{i18n>FormAR_CheckRule}" labelFor="CheckRule"/>
+          <Select
+            id="CheckRule"
+            width="245px"
+            required="true"
+            enabled="false"
+            visible="false"
+            selectedKey="{FormData>/CHECK_RULE}"
+            class="SelectClass Rimless"
+            items="{
+					    path: '/CheckRuleModel'
+				    }">
+            <core:Item key="{CORE_VALUE}" text="{VALUE_TEXT}"/>
+          </Select>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>      
+        <!--虚拟银行账户-->
+        <VBox>
+          <Label id="VBAccountLabel" text="{i18n>FormAR_VirtualBankAccount}" />
+          <Input
+            id="VirtualBankAccount"
+            name="BU_BKEXT"
+            maxLength="20"
+            enabled="false"
+            value="{FormData>/BU_BKEXT}"
+            autocomplete="false"
+            visible="false"
+            class="InputClass"
+            change="onVBAChange"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>       
+        <!--ID-->
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="reqid"
+          visible="false"
+          value="{FormData>/REQID}"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="22%" />
+          </layoutData>
+        </VBox>
+        <!--VBA--><!--
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="VBA"
+          visible="false"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>
+        --><!--RECACCOUNT--><!--
+        <VBox>
+          <HBox>
+            <Label/>
+          </HBox>
+          <input
+          id="RECACCOUNT"
+          visible="false"
+          class="InputClass"/>
+          <layoutData>
+            <FlexItemData baseSize="5%" />
+          </layoutData>
+        </VBox>-->
+    </FlexBox>
+    </VBox>
+  </HBox>
+</mvc:View>

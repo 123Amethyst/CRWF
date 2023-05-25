@@ -1,0 +1,44 @@
+﻿{
+  "selectedKey": "Page_ApprovalFlow_Initiation",
+  "navigation": [
+    {
+      "title": "Menu_CreditFlow",
+      "icon": "sap-icon://activity-individual",
+      "expanded": true,
+      "key": "CreditFlow",
+      "items": [
+        {
+          "title": "Menu_CreditWF_Initiation",
+          "key": "Page_CreditWF_Initiation"
+        },
+        {
+          "title": "Menu_CreditWF_ToDoList",
+          "key": "Page_CreditWF_ToDoList",
+          "expanded": true
+        }
+      ]
+    },
+    {
+      "title": "Menu_Common_Dictionary",
+      "key": "Page_Common_Dictionary",
+      "icon": "sap-icon://education",
+      "expanded": false
+    },
+    {
+      "title": "Menu_SystemSettings",
+      "icon": "sap-icon://action-settings",
+      "expanded": false,
+      "key": "SystemSettings",
+      "items": [
+        {
+          "title": "Menu_SystemSettings_SalesAdminDept",
+          "key": "Page_SystemSettings_SalesAdminDept"
+        },
+        {
+          "title": "Menu_SystemSettings_DelegationSetting",
+          "key": "Page_SystemSettings_DelegationSetting"
+        }
+      ]
+    }
+  ]
+}

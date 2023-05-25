@@ -1,0 +1,851 @@
+﻿.tips 
+{
+    color:red
+}
+
+table {
+    table-layout: fixed;
+}
+.label {
+    line-height: 2rem;
+}
+
+.Padding section {
+    padding: 1rem !important;
+}
+.sapUiMediumMarginBottom {
+    height: 1px !important;
+}
+.sapMScrollContScroll {
+    height: 100% !important;
+}
+
+.MessagePageClass {
+    min-height: 300px;
+}
+
+/*#container-ui5---home--home_tool_home-img {
+    min-width: min-content !important;
+}*/
+
+
+/*自定义表格*/
+.CustomTableTool {
+    margin-bottom: 16px;
+}
+
+    .CustomTableTool span {
+        font-size: x-large;
+    }
+
+.red {
+    color: #dd5a43 !important;
+}
+
+tr.hide {
+    visibility: collapse;
+}
+
+span.hide {
+    display: none;
+}
+
+.CustomTable {
+    table-layout: fixed;
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+    .CustomTable td {
+        padding: 7px !important;
+    }
+
+    .CustomTable.CustomTable40 tr {
+        height: 40px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        background-color: #f9f9f9;
+    }
+
+    .CustomTable.CustomTable50 tr {
+        height: 50px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        background-color: #f9f9f9;
+    }
+
+    .CustomTable span {
+        font-weight: normal;
+        font-size: smaller;
+    }
+
+.CustomTableDate input {
+    cursor: pointer;
+}
+
+.CustomTableButtons .CustomTableButton {
+    padding-right: 7px !important;
+}
+
+.CustomTable .sapMSltReadonly span {
+    cursor: text !important;
+}
+
+.CustomTableButton {
+    font-size: 1rem;
+    padding: 0 !important;
+    height: 100% !important;
+}
+
+.CustomTable div.CustomTableInput {
+    /*height: -webkit-fill-available !important;*/
+    width: -webkit-fill-available !important;
+    margin: 0;
+}
+
+.CustomTable.CustomTable50 div.CustomTableInput {
+    height: 2.25rem !important;
+    width: -webkit-fill-available !important;
+    margin: 0;
+}
+
+.CustomTable.CustomTable50 .CustomTableInput div:not(.sapMInputBaseIconContainer) {
+    height: 2.25rem !important;
+    width: -webkit-fill-available !important;
+    margin: 0;
+}
+
+.CustomTable.CustomTable50 .CustomTableInput div.sapMInputBaseIconContainer span {
+    line-height: 2.125rem;
+}
+
+.CustomTable div.CustomTableSelect {
+    width: -webkit-fill-available !important;
+    margin: 0;
+}
+
+.CustomTable div.CustomTableTextArea {
+    width: -webkit-fill-available !important;
+    margin: 0;
+}
+
+.CustomTableDateViewMode input {
+    cursor: text !important;
+}
+
+.CustomTableDateViewMode span {
+    cursor: text !important;
+}
+
+.CustomTableDateViewMode.CustomTableCheckbox div {
+    cursor: default !important;
+}
+
+.CustomTableCustominput {
+    display: inline-flex;
+    width: 100%;
+}
+
+    .CustomTableCustominput > :nth-child(1) {
+        width: 100%;
+    }
+
+.SearchDialog > section {
+    padding: 20px;
+}
+
+.halfWidth {
+    width: 50% !important;
+}
+
+.notAllowed input {
+    cursor: not-allowed !important;
+}
+
+.notAllowed span {
+    cursor: not-allowed !important;
+}
+
+.formToolbar {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+    .formToolbar button {
+        margin: 0 !important;
+    }
+
+.NoExpandButton > header > :first-child {
+    display: none;
+}
+
+.NoExpandButton > header > :nth-child(2) {
+    margin-left: 1rem !important;
+}
+/* 自定义表格过滤*/
+.TableFilter.NoTitle h5 {
+    display: none;
+}
+
+.TableFilter.NoTitle .sapUiFormResGridCont {
+    padding-bottom: 0;
+}
+
+.TableFilter .FilterOper {
+    min-width: auto;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+    .TableFilter .FilterOper > :nth-child(3) {
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
+        text-align: center;
+    }
+
+    .TableFilter .FilterOper > :nth-child(4) {
+        display: none;
+    }
+
+.TableFilter .FilterField {
+    max-width: 5rem;
+}
+
+.TableFilter .FilterInput {
+    width: 100%;
+    margin-left: 3px;
+}
+
+.TableFilter .Scroll > :first-child {
+    display: flex;
+}
+
+.TableFilter .Scroll .FilterField {
+    width: 5rem !important;
+}
+
+.TableFilter .Scroll .layout {
+    padding-right: 10px !important;
+}
+
+@media screen and (max-width:938px) {
+    .TableFilter .layout {
+        width: 100%;
+        min-width: 260px;
+        align-items: center;
+        display: inline-flex;
+    }
+}
+
+@media screen and (min-width:938px) and (max-width:1234px) {
+    .TableFilter .layout {
+        width: calc(100%/2.2);
+        min-width: 260px;
+        align-items: center;
+        display: inline-flex;
+        padding-right: 35px;
+    }
+}
+
+@media screen and (min-width:1234px) and (max-width:1529px) {
+    .TableFilter .layout {
+        width: calc(100%/3.4);
+        min-width: 260px;
+        align-items: center;
+        display: inline-flex;
+        padding-right: 35px;
+    }
+}
+
+@media screen and (min-width:1529px) {
+    .TableFilter .layout {
+        width: calc(100%/4.6);
+        min-width: 260px;
+        align-items: center;
+        display: inline-flex;
+        padding-right: 35px;
+    }
+}
+
+/*---------ChineseRedStyle----------*/
+/*无边框*/
+.ChineseRedStyle .Rimless {
+    border: 1px solid #f0f0f0;
+    background: #f0f0f0;
+}
+
+    .ChineseRedStyle .Rimless div {
+        border: 0;
+        background: #f0f0f0;
+    }
+
+/*只读鼠标样式*/
+.ChineseRedStyle .sapMSlt.sapMSltReadonly,
+.ChineseRedStyle .sapMSlt.sapMSltReadonly > .sapMSltLabel,
+.ChineseRedStyle .sapMSltIconOnly.sapMSltReadonly .sapMSltIcon {
+    cursor: unset;
+}
+
+.ChineseRedStyle input[readonly="readonly"] {
+    cursor: unset;
+}
+
+/*工具行*/
+.ChineseRedStyle .HomeTool {
+    background-color: #E90001 !important;
+    box-shadow: none !important;
+}
+
+.ChineseRedStyle .HomeToolButton img {
+    min-width: 8rem;
+}
+
+.ChineseRedStyle .HomeToolButton span {
+    color: white;
+}
+
+.ChineseRedStyle .HomeTool > Button:hover {
+    background-color: #b00 !important;
+    color: white !important;
+}
+
+    .ChineseRedStyle .HomeTool > Button:hover > span:first-child {
+        background-color: #b00 !important;
+        color: white !important;
+    }
+
+/*表格过滤*/
+.ChineseRedStyle .CFilterOper {
+    margin-right: 5px;
+}
+
+/*树形列表*/
+.ChineseRedStyle .NavigationListClass > li > div[aria-selected="true"] {
+    background-color: #FFE5E5;
+}
+
+.ChineseRedStyle .NavigationListClass > li > div[aria-expanded="false"] {
+    border: none;
+}
+
+.ChineseRedStyle .NavigationListClass > li > div:active {
+    background-color: #FFE5E5 !important;
+}
+
+.ChineseRedStyle .NavigationListClass > li ul > li[aria-selected="true"] {
+    background-color: #FFE5E5;
+    border: none !important;
+}
+
+    .ChineseRedStyle .NavigationListClass > li ul > li[aria-selected="true"]:hover {
+        background-color: #FFE5E5;
+    }
+
+.ChineseRedStyle .NavigationListClass > li ul > li:active {
+    background-color: #FFE5E5 !important;
+    border: none;
+}
+
+/*全屏页*/
+.ChineseRedStyle .Page {
+    height: 100%;
+}
+
+    .ChineseRedStyle .Page > div {
+        height: 100%;
+    }
+
+/*按钮*/
+.ChineseRedStyle .AutoButton {
+    width: auto !important;
+}
+
+.ChineseRedStyle .LightButton_1 > span {
+    color: white;
+    background: #E90001;
+}
+
+.ChineseRedStyle .LightButton_1:hover > span {
+    border: 1px solid #E90001 !important;
+    color: white !important;
+    background-color: #E90001 !important;
+}
+
+.ChineseRedStyle .LightButton_1 > span > span {
+    color: inherit !important;
+}
+
+.ChineseRedStyle .LightButton {
+    width: 100px;
+}
+
+    .ChineseRedStyle .LightButton > span {
+        color: white;
+        border: 1px solid #f0f0f0;
+        background: #E90001;
+    }
+
+    .ChineseRedStyle .LightButton:hover > span {
+        border: 1px solid #E90001 !important;
+        color: white !important;
+        background-color: #E90001 !important;
+        box-shadow: 0 0 8px rgba(233, 0, 1, 0.7);
+    }
+
+    .ChineseRedStyle .LightButton > span > span {
+        color: inherit !important;
+    }
+
+.ChineseRedStyle .DarkButton {
+    width: 100px;
+}
+
+    .ChineseRedStyle .DarkButton > span {
+        color: #E90001;
+        border: 1px solid #f0f0f0;
+        background: #FFE5E5;
+    }
+
+    .ChineseRedStyle .DarkButton:hover > span {
+        border: 1px solid #E90001 !important;
+        color: #E90001 !important;
+        background-color: #FFE5E5 !important;
+    }
+
+    .ChineseRedStyle .DarkButton > span > span {
+        color: inherit !important;
+    }
+
+.ChineseRedStyle .DefaultButton {
+    width: 100px;
+}
+
+    .ChineseRedStyle .DefaultButton > span {
+        color: #FF5A5A;
+        border: 1px solid #FF5A5A !important;
+        border-radius: 7px;
+        background: #FFFFFF;
+    }
+
+    .ChineseRedStyle .DefaultButton:hover > span {
+        border: 1px solid #FF5A5A;
+        color: #FF5A5A !important;
+        background-color: #ffe5e5 !important;
+    }
+
+    .ChineseRedStyle .DefaultButton > span > span {
+        color: inherit !important;
+    }
+
+.ChineseRedStyle .ImportButton {
+    margin: 0 0 0 0.5rem;
+}
+/*弹出框按钮*/
+.ChineseRedStyle .sapMMessageBox button.sapMBtnInverted {
+    width: 100px;
+}
+
+    .ChineseRedStyle .sapMMessageBox button.sapMBtnInverted > span {
+        color: white;
+        border: 1px solid #f0f0f0;
+        background: #E90001;
+    }
+
+    .ChineseRedStyle .sapMMessageBox button.sapMBtnInverted:hover > span {
+        border: 1px solid #E90001 !important;
+        color: white !important;
+        background-color: #E90001 !important;
+        box-shadow: 0 0 8px rgba(233, 0, 1, 0.7);
+    }
+
+    .ChineseRedStyle .sapMMessageBox button.sapMBtnInverted > span > span {
+        color: inherit !important;
+    }
+
+.ChineseRedStyle .sapMMessageBox button:not(.sapMBtnInverted) {
+    width: 100px;
+}
+
+    .ChineseRedStyle .sapMMessageBox button:not(.sapMBtnInverted) > span {
+        color: #E90001;
+        border: 1px solid #f0f0f0;
+        background: #FFE5E5;
+    }
+
+    .ChineseRedStyle .sapMMessageBox button:not(.sapMBtnInverted):hover > span {
+        border: 1px solid #E90001 !important;
+        color: #E90001 !important;
+        background-color: #FFE5E5 !important;
+    }
+
+    .ChineseRedStyle .sapMMessageBox button:not(.sapMBtnInverted) > span > span {
+        color: inherit !important;
+    }
+/*表单*/
+.ChineseRedStyle .FormClass .sapUiFormTitle {
+    font-weight: bold;
+}
+
+/*输入框*/
+.ChineseRedStyle .InputClass {
+    width: 100%;
+}
+
+.ChineseRedStyle .InputClass > div:not(.sapMInputDescriptionWrapper) {
+    background-color: #FFE5E5;
+}
+
+.ChineseRedStyle .InputClass > div:not(.sapMInputBaseContentWrapperInformation):not(.sapMSltInformation) {
+    border: none;
+}
+
+.ChineseRedStyle .InputClass > div:not(.sapMInputDescriptionWrapper):not(.sapMSltInformation):hover {
+    background-color: #FFE5E5 !important;
+}
+
+.ChineseRedStyle .InputClass > div > div {
+    background-color: transparent;
+}
+
+.ChineseRedStyle .sapMInputBaseContentWrapperError {
+    border: 2px solid red !important;
+}
+
+.ChineseRedStyle .showState input {
+    width: 100% !important;
+}
+
+/*搜索输入框*/
+.ChineseRedStyle .SearchFieldClass > form {
+    background-color: #FFE5E5;
+    border: none;
+}
+
+/*下拉选择框*/
+.ChineseRedStyle .SelectClass {
+    background-color: #FFE5E5;
+}
+
+    .ChineseRedStyle .SelectClass:not(.FilterOper) {
+        width: 100% !important;
+    }
+
+    .ChineseRedStyle .SelectClass:not(.sapMInputBaseContentWrapperInformation):not(.sapMSltInformation) {
+        border: none;
+    }
+
+        .ChineseRedStyle .SelectClass:not(.sapMInputBaseContentWrapperInformation):not(.sapMSltInformation):hover {
+            border: none;
+            background-color: #FFE5E5 !important;
+        }
+
+    .ChineseRedStyle .SelectClass > span {
+        background-color: transparent;
+    }
+
+.ChineseRedStyle .sapMSelectListItemBaseSelected { /*直接修改源类*/
+    border: none;
+    background-color: #FFE5E5;
+}
+
+    .ChineseRedStyle .sapMSelectListItemBaseSelected:hover { /*直接修改源类*/
+        background-color: #FFE5E5 !important;
+    }
+
+.ChineseRedStyle .sapMSltError {
+    border: 2px solid red !important;
+}
+
+/*下拉多选框*/
+.ChineseRedStyle .MultiComboBoxClass > div {
+    background-color: #FFE5E5;
+}
+
+    .ChineseRedStyle .MultiComboBoxClass > div:not(.FilterOper) {
+        width: 100% !important;
+    }
+
+    .ChineseRedStyle .MultiComboBoxClass > div:not(.sapMInputBaseContentWrapperInformation) {
+        border: none;
+    }
+
+    .ChineseRedStyle .MultiComboBoxClass > div:hover {
+        border: none;
+        background-color: #FFE5E5 !important;
+    }
+
+    .ChineseRedStyle .MultiComboBoxClass > div > span {
+        background-color: transparent;
+    }
+
+/*文本域*/
+.ChineseRedStyle .TextAreaClass {
+    background-color: #FFE5E5;
+    border: none;
+    width: 100%;
+}
+
+    .ChineseRedStyle .TextAreaClass > div {
+        background-color: #FFE5E5;
+        border: none;
+    }
+
+        .ChineseRedStyle .TextAreaClass > div:hover {
+            background-color: #FFE5E5 !important;
+        }
+
+/*表单块*/
+.ChineseRedStyle .HBoxClass {
+    margin-top: 42px;
+}
+
+    .ChineseRedStyle .HBoxClass > div:not(:nth-last-child(1)) {
+        margin-right: 30px;
+    }
+
+    .ChineseRedStyle .HBoxClass > div:nth-last-child(1):first-child {
+        min-width: 100% !important;
+    }
+
+    .ChineseRedStyle .HBoxClass > div:nth-last-child(2):first-child,
+    .ChineseRedStyle .HBoxClass > div:nth-last-child(2):first-child ~ :nth-last-child(1) {
+        width: 50%;
+    }
+
+.ChineseRedStyle .ObjectHeaderClass img {
+    max-width: 19px;
+    max-height: 29px;
+}
+
+.ChineseRedStyle .ObjectHeaderClass > div {
+    padding: 0;
+}
+
+.ChineseRedStyle .ObjectHeaderClass .sapMOHTitle {
+    margin-left: 29px;
+}
+
+    .ChineseRedStyle .ObjectHeaderClass .sapMOHTitle span {
+        font-weight: bold;
+    }
+
+/*表格*/
+.ChineseRedStyle .TableClass .OverflowToolbarClass {
+    margin-bottom: 16px;
+}
+
+.ChineseRedStyle .TableClass .sapUiTableColHdrCnt,
+.ChineseRedStyle .TableClass .sapUiTableHeaderRow {
+    background-color: #FFE5E5;
+}
+
+.ChineseRedStyle .sapUiTableHeaderCell:not(.sapUiTableRowActionHeaderCell):hover {
+    background-color: #ffd2d2 !important;
+}
+
+.ChineseRedStyle .TableClass table td {
+    text-align: center !important;
+}
+
+    .ChineseRedStyle .TableClass table td > div > div {
+        display: inline-block !important;
+        text-align: center;
+    }
+
+/*单选框*/
+.ChineseRedStyle .CheckBoxClass > div {
+    background-color: #FFE5E5;
+}
+
+/*时间选择框*/
+.ChineseRedStyle .DatePickerClass {
+    width: 100%;
+}
+
+    .ChineseRedStyle .DatePickerClass > div {
+        background-color: #FFE5E5;
+    }
+
+        .ChineseRedStyle .DatePickerClass > div:not(.sapMInputBaseContentWrapperInformation) {
+            border: none;
+        }
+
+        .ChineseRedStyle .DatePickerClass > div:hover {
+            background-color: #FFE5E5 !important;
+        }
+
+        .ChineseRedStyle .DatePickerClass > div > div {
+            background-color: transparent;
+        }
+
+/*上传控件*/
+.ChineseRedStyle .FileUploaderClass Button {
+    width: 100px;
+}
+
+    .ChineseRedStyle .FileUploaderClass Button > span {
+        color: white;
+        border: 1px solid #f0f0f0;
+        background: #E90001;
+    }
+
+.ChineseRedStyle .FileUploaderClass:hover Button > span {
+    border: 1px solid #E90001 !important;
+    color: #E90001 !important;
+    background-color: #FFE5E5 !important;
+}
+
+/*布局*/
+.ChineseRedStyle .BlockLayoutClass,
+.ChineseRedStyle .BlockLayoutRowClass,
+.ChineseRedStyle .BlockLayoutRowClass > div {
+    height: 100%;
+}
+
+.ChineseRedStyle .FlexBoxClass {
+    margin: 0;
+    padding: 0;
+}
+
+    .ChineseRedStyle .FlexBoxClass > div {
+        margin-right: 2%;
+        margin-top: 10px;
+    }
+
+.ChineseRedStyle .DialogClass footer button.sapMDialogBeginButton {
+    position: absolute;
+    left: calc(48% - 100px);
+}
+
+.ChineseRedStyle .DialogClass footer button.sapMDialogEndButton {
+    position: absolute;
+    right: calc(48% - 100px);
+}
+/*标题*/
+.ChineseRedStyle .TitleClass {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.ChineseRedStyle .SubTitleClass {
+    color: #A5A5A5
+}
+
+.ChineseRedStyle .SubTitle {
+    background-color: #E90001;
+    padding: 5px;
+}
+
+    .ChineseRedStyle .SubTitle span {
+        color: white
+    }
+
+/*自定义表格*/
+.ChineseRedStyle .CustomTable {
+    border: none;
+}
+
+    .ChineseRedStyle .CustomTable tr {
+        background: white !important;
+    }
+
+    .ChineseRedStyle .CustomTable.CustomTable40 tr,
+    .ChineseRedStyle .CustomTable.CustomTable50 tr {
+        height: 0 !important;
+    }
+
+/*自定义分页*/
+.ChineseRedStyle .TablePage > button {
+    width: auto;
+}
+
+/*弹出页面*/
+.ChineseRedStyle .DialogClass header > div > div:nth-last-child(2) > div {
+    align-items: center;
+    display: block;
+    background: #E90001;
+}
+
+    .ChineseRedStyle .DialogClass header > div > div:nth-last-child(2) > div h2 {
+        font-size: 19px;
+        font-family: Microsoft YaHei;
+        font-weight: bold;
+        color: #FFFFFF;
+    }
+
+.ChineseRedStyle .DialogClass header > div.sapMIBar {
+    align-items: center;
+    background: #E90001;
+}
+
+    .ChineseRedStyle .DialogClass header > div.sapMIBar > div.sapMTitle > span {
+        font-size: 19px;
+        font-family: Microsoft YaHei;
+        font-weight: bold;
+        color: #FFFFFF;
+    }
+
+/*标签选择*/
+.ChineseRedStyle .IconTabBarClass > div:nth-last-child(1) > div {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.ChineseRedStyle .IconTabBarClass .sapMITBTextOnly .sapMITBFilterDefault.sapMITBSelected .sapMITBText {
+    color: #E90001 !important;
+    font-weight: bold;
+}
+
+.ChineseRedStyle .IconTabBarClass .sapMITBSelected .sapMITBContentArrow::after {
+    background: #E90001 !important;
+}
+
+
+/*公共属性*/
+.ChineseRedStyle .NoMarginTopClass {
+    margin-top: 0px;
+}
+/*----------------------------------*/
+
+.ChineseRedStyle .ChangeInputColor {
+    width: 100%;
+}
+.ChineseRedStyle .ChangeInputColor > div:not(.sapMInputDescriptionWrapper) {
+    background-color: yellow;
+}
+.ChineseRedStyle .ChangeInputColor > div:not(.sapMInputBaseContentWrapperInformation):not(.sapMSltInformation) {
+    border: none;
+}
+
+.ChineseRedStyle .ChangeInputColor > div:not(.sapMInputDescriptionWrapper):not(.sapMSltInformation):hover {
+    background-color: yellow !important;
+}
+
+.ChineseRedStyle .ChangeInputColor > div > div {
+    background-color: transparent;
+}
+
+/*下拉选择框*/
+.ChineseRedStyle .ChangeSelectColor {
+    background-color: yellow;
+}
+
+.ChineseRedStyle .ChangeSelectColor:not(.FilterOper) {
+    width: 100% !important;
+}
+
+.ChineseRedStyle .ChangeSelectColor:not(.sapMInputBaseContentWrapperInformation):not(.sapMSltInformation) {
+    border: none;
+}
+
+.ChineseRedStyle .ChangeSelectColor:not(.sapMInputBaseContentWrapperInformation):not(.sapMSltInformation):hover {
+    border: none;
+    background-color: yellow !important;
+}
+
+.ChineseRedStyle .ChangeSelectColor > span {
+    background-color: transparent;
+}

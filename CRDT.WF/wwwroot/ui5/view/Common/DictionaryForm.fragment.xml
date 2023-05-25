@@ -1,0 +1,146 @@
+﻿<core:FragmentDefinition
+	xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt"
+  xmlns:t="sap.ui.table"
+  xmlns:customInput="custom.customInput">
+  <Dialog
+		class="Padding DialogClass"
+		title="{i18n>xtit.DictionaryForm}"
+    contentWidth="800px"
+    id="dialog_dictionaryForm">
+    <content>
+      <VBox id="FormDetails">
+        <FlexBox
+            renderType="List"
+            alignItems="Center"
+            wrap="Wrap"
+            class="FlexBoxClass">
+          <!--字典类型-->
+          <VBox>
+            <Label text="{i18n>xfld.DType}:" labelFor="dTypeInput"/>
+            <layoutData>
+              <FlexItemData baseSize="13%" />
+            </layoutData>
+          </VBox>
+          <VBox>
+            <Input
+              id="dTypeInput"
+              required="true"
+              name="DTYPE"
+              value="{FormData>/DTYPE}"
+              editable="false"
+              autocomplete="false"
+              class="InputClass"
+              change="onDTYPEChange"/>
+            <layoutData>
+              <FlexItemData baseSize="32%" />
+            </layoutData>
+          </VBox>
+          <!--字典编码-->
+          <VBox>
+            <Label text="{i18n>xfld.DCode}:" labelFor="dCodeInput"/>
+            <layoutData>
+              <FlexItemData baseSize="13%" />
+            </layoutData>
+          </VBox>
+          <VBox>
+            <Input
+              id="dCodeInput"
+              required="true"
+              name="DCODE"
+              value="{FormData>/DCODE}"
+              autocomplete="false"
+              class="InputClass"
+              change="onDCODEChange"/>
+            <layoutData>
+              <FlexItemData baseSize="32%" />
+            </layoutData>
+          </VBox>
+          <!--字典名称-->
+          <VBox>
+            <Label text="{i18n>xfld.DName}:" labelFor="dNameInput"/>
+            <layoutData>
+              <FlexItemData baseSize="13%" />
+            </layoutData>
+          </VBox>
+          <VBox>
+            <Input
+              id="dNameInput"
+              name="DNAME"
+              required="true"
+              value="{FormData>/DNAME}"
+              autocomplete="false"
+              class="InputClass"
+              change="onDNAMEChange"/>
+            <layoutData>
+              <FlexItemData baseSize="32%" />
+            </layoutData>
+          </VBox>
+          <!--上一级字典类型-->
+          <VBox>
+            <Label text="{i18n>xfld.PType}:" />
+            <layoutData>
+              <FlexItemData baseSize="13%" />
+            </layoutData>
+          </VBox>
+          <VBox>
+            <Input
+              id="pTypeInput"
+              name="PTYPE"
+              value="{FormData>/PTYPE}"
+              autocomplete="false"
+              class="InputClass"/>
+            <layoutData>
+              <FlexItemData baseSize="32%" />
+            </layoutData>
+          </VBox>
+          <!--上一级字典编码-->
+          <VBox>
+            <Label text="{i18n>xfld.PCode}:"/>
+            <layoutData>
+              <FlexItemData baseSize="13%" />
+            </layoutData>
+          </VBox>
+          <VBox>
+            <Input
+              id="pCodeInput"
+              name="PCODE"
+              value="{FormData>/PCODE}"
+              autocomplete="false"
+              class="InputClass"/>
+            <layoutData>
+              <FlexItemData baseSize="32%" />
+            </layoutData>
+          </VBox>
+          <!--字典ID-->
+          <VBox>
+            <Label/>
+            <layoutData>
+              <FlexItemData baseSize="13%" />
+            </layoutData>
+          </VBox>
+          <VBox>
+            <Input
+              id="idInput"
+              name="ID"
+              value="{FormData>/ID}"
+              autocomplete="false"
+              class="InputClass"
+              visible="false"/>
+            <layoutData>
+              <FlexItemData baseSize="32%" />
+            </layoutData>
+          </VBox>
+        </FlexBox>
+      </VBox>
+    </content>
+    <beginButton>
+      <Button text="{i18n>xbut.buttonSubmit}" press=".onSubmit"  type="Emphasized" class="LightButton"/>
+    </beginButton>
+    <endButton>
+      <Button text="{i18n>xbut.buttonCancel}" press=".onCancel" class="DarkButton"/>
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>

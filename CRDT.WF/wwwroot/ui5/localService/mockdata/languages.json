@@ -1,0 +1,23 @@
+﻿{
+  "selectedKey": "zh_CN",
+  "languages": [
+    {
+      "num": 0,
+      "name": "\u7b80\u4f53\u4e2d\u6587",
+      "icon": "",
+      "key": "zh_CN"
+    },
+    {
+      "num": 1,
+      "name": "English",
+      "icon": "",
+      "key": "en_US"
+    },
+    {
+      "num": 2,
+      "name": "繁體中文",
+      "icon": "",
+      "key": "zh_HK"
+    }
+  ]
+}

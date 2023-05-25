@@ -1,0 +1,170 @@
+﻿<core:FragmentDefinition
+	xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt"
+  xmlns:t="sap.ui.table"
+  xmlns:customInput="custom.customInput">
+	<Dialog
+		class="Padding DialogClass"
+		title="{i18n>OtherSetting_DelegationSetting_Form_Title}"
+    contentWidth="800px"
+    id="DelegationSetting_Dialog">
+    <content>
+      <VBox id="FormDetails">
+        <FlexBox
+            renderType="List"
+            alignItems="Center"
+            wrap="Wrap"
+            class="FlexBoxClass">
+          <!--授权人-->
+          <VBox>
+            <Label text="{i18n>OtherSetting_DelegationSetting_Form0}" labelFor="Form0"/>
+            <layoutData>
+              <FlexItemData baseSize="9%" />
+            </layoutData>
+          </VBox>
+          <VBox>
+            <Input
+              id="Form0"
+              required="true"
+              name="FromAccount"
+              value="{FormData>/FromAccount} - {FormData>/FromUserName}"
+              autocomplete="false"
+              editable="false"
+              class="InputClass"/>
+            <layoutData>
+              <FlexItemData baseSize="36%" />
+            </layoutData>
+          </VBox>
+          <!--被授权人-->
+          <VBox>
+            <Label text="{i18n>OtherSetting_DelegationSetting_Form1}" labelFor="Form1"/>
+            <layoutData>
+              <FlexItemData baseSize="9%" />
+            </layoutData>
+          </VBox>
+          <VBox>
+            <customInput:TableInput id="Form1"
+                                    required="true"
+                                    name="Applicant"
+                                    value="{FormData>/ToUserId}"
+                                    showValue="{FormData>/ToAccount} - {FormData>/ToUserName}"
+                                    tableTitle="{i18n>TableSelect_Initiation_Title}"
+                                    tableRequired="true"
+                                    tableBinds="{
+                                              UserId:'FormData>/ToUserId',
+                                              Account:'FormData>/ToAccount',
+                                              AccountName:'FormData>/ToUserName'}"
+                                    url="/ApprovalFlow/GetUserDDList"
+                                    attachedData="{bukrs:'@@_sysInfo>/CurrentUser/Company','userType':'SubmitUser'}"
+                                    styleClass="InputClass Rimless">
+              <t:Column width="15rem"
+                        showFilterMenuEntry="false"
+                        filterProperty="Account">
+                <Label text="{i18n>TableSelect_Initiation_Field0}" />
+                <t:template>
+                  <Text text="{Account}"/>
+                </t:template>
+              </t:Column>
+              <t:Column width="auto"
+                        showFilterMenuEntry="false"
+                        filterProperty="AccountName">
+                <Label text="{i18n>TableSelect_Initiation_Field1}" />
+                <t:template>
+                  <Text text="{AccountName}"/>
+                </t:template>
+              </t:Column>
+            </customInput:TableInput>
+            <layoutData>
+              <FlexItemData baseSize="36%" />
+            </layoutData>
+          </VBox>
+          <!--开始日期-->
+          <VBox>
+            <Label text="{i18n>OtherSetting_DelegationSetting_Form2}" labelFor="Form2"/>
+            <layoutData>
+              <FlexItemData baseSize="9%" />
+            </layoutData>
+          </VBox>
+          <VBox>
+            <DatePicker
+              id="Form2"
+              required="true"
+              name="FromDate"
+              value="{FormData>/FromDate}"
+              valueFormat="yyyy-MM-dd"
+              change="changeDelegationSetting_Details_FromDate"
+              class="DatePickerClass"/>
+            <layoutData>
+              <FlexItemData baseSize="36%" />
+            </layoutData>
+          </VBox>
+          <!--结束日期-->
+          <VBox>
+            <Label text="{i18n>OtherSetting_DelegationSetting_Form3}" labelFor="Form3"/>
+            <layoutData>
+              <FlexItemData baseSize="9%" />
+            </layoutData>
+          </VBox>
+          <VBox>
+            <DatePicker
+              id="Form3"
+              required="true"
+              name="ToDate"
+              value="{FormData>/ToDate}"
+              valueFormat="yyyy-MM-dd"
+              change="changeDelegationSetting_Details_ToDate"
+              class="DatePickerClass"/>
+            <layoutData>
+              <FlexItemData baseSize="36%" />
+            </layoutData>
+          </VBox>
+          <!--授权系统-->
+          <VBox>
+            <Label text="{i18n>OtherSetting_DelegationSetting_Form4}" labelFor="Form4"/>
+            <layoutData>
+              <FlexItemData baseSize="9%" />
+            </layoutData>
+          </VBox>
+          <VBox>
+            <CheckBox
+              id="Form4"
+              name="AgentAll"
+              selected="{FormData>/AgentAll}"
+              editable="false"
+              text="{i18n>OtherSetting_DelegationSetting_AgentAll}"
+              class="CheckBoxClass"/>
+            <layoutData>
+              <FlexItemData baseSize="36%" />
+            </layoutData>
+          </VBox>
+          <!--邮件提醒-->
+          <VBox>
+            <Label visible="false" text="{i18n>OtherSetting_DelegationSetting_Form5}" labelFor="Form5"/>
+            <layoutData>
+              <FlexItemData baseSize="9%" />
+            </layoutData>
+          </VBox>
+          <VBox>
+            <CheckBox
+              id="Form5"
+              name="IfNotify"
+              visible="false"
+              selected="{FormData>/IfNotify}"
+              text="{i18n>OtherSetting_DelegationSetting_IfNotify}"/>
+            <layoutData>
+              <FlexItemData baseSize="36%" />
+            </layoutData>
+          </VBox>
+        </FlexBox>
+      </VBox>
+    </content>
+    <beginButton>
+      <Button text="{i18n>Buttons_Save}" press=".onOtherSetting_DelegationSetting_Details_Dialog_Save"  type="Emphasized" class="LightButton"/>
+    </beginButton>
+    <endButton>
+      <Button text="{i18n>Buttons_Cancel}" press=".onOtherSetting_DelegationSetting_Details_Dialog_Cancel" class="DarkButton"/>
+    </endButton>
+	</Dialog>
+</core:FragmentDefinition>

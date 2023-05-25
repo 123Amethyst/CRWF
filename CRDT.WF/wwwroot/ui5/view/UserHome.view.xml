@@ -1,0 +1,15 @@
+<mvc:View
+	controllerName="crdt.wf.ui5.controller.UserHome"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+  height="100%">
+
+  <MessagePage
+		title="{i18n>xtit.Home}"
+		text="{i18n>WelcomeDetail}"
+		icon="sap-icon://product"
+		description=""
+		id="page">
+  </MessagePage>
+
+</mvc:View>

@@ -1,0 +1,192 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{demo}",
+		"description": "{{appDescription}}",
+		"id": "crdt.wf.ui5",
+		"resources": "resources.json",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"sourceTemplate": {
+			"id": "sap.ui.ui5-template-plugin.3worklistodatav4project",
+			"version": "1.78.8"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://task",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "crdt.wf.ui5.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.66.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.f": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "crdt.wf.ui5.i18n.i18n"
+				}
+			},
+			"languages": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "localService/mockdata/languages.json"
+			},
+			"menu": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "localService/mockdata/menu.json"
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "crdt.wf.ui5.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"bypassed": {
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "Home",
+					"target": [
+						"Home"
+					]
+				},
+				{
+					"pattern": "Initiation",
+					"name": "Initiation",
+					"target": [
+						"Initiation"
+					]
+				},
+				{
+					"pattern": "ToDoList",
+					"name": "ToDoList",
+					"target": [
+						"ToDoList"
+					]
+				},
+				{
+					"pattern": "Dictionary/{DType}",
+					"name": "Dictionary",
+					"target": [
+						"Dictionary"
+					]
+				},
+				{
+					"pattern": "Form_OpenCRDT_Index",
+					"name": "Form_OpenCRDT_Index",
+					"target": [
+						"Form_OpenCRDT_Index"
+					]
+				},
+				{
+					"pattern": "Form_UpdateCRDT_Index",
+					"name": "Form_UpdateCRDT_Index",
+					"target": [
+						"Form_UpdateCRDT_Index"
+					]
+				},
+				{
+					"pattern": "Form_UpdateVBA_Index",
+					"name": "Form_UpdateVBA_Index",
+					"target": [
+						"Form_UpdateVBA_Index"
+					]
+				},
+				{
+					"pattern": "Form_CloseCRDT_Index",
+					"name": "Form_CloseCRDT_Index",
+					"target": [
+						"Form_CloseCRDT_Index"
+					]
+				},
+				{
+					"pattern": "Form_ReOpenCRDT_Index",
+					"name": "Form_ReOpenCRDT_Index",
+					"target": [
+						"Form_ReOpenCRDT_Index"
+					]
+				}
+			],
+			"targets": {
+				"Home": {
+					"viewName": "Home",
+					"viewId": "Home"
+				},
+				"Initiation": {
+					"viewName": "CreditWF.Initiation",
+					"viewId": "Initiation"
+				},
+				"ToDoList": {
+					"viewName": "CreditWF.ToDoList",
+					"viewId": "ToDoList"
+				},
+				"Dictionary": {
+					"viewName": "Common.Dictionary",
+					"viewId": "Dictionary"
+				},
+				"Form_OpenCRDT_Index": {
+					"viewName": "Template.Form_OpenCRDT_Index",
+					"viewId": "Form_OpenCRDT_Index"
+				},
+				"Form_UpdateCRDT_Index": {
+					"viewName": "Template.Form_UpdateCRDT_Index",
+					"viewId": "Form_UpdateCRDT_Index"
+				},
+				"Form_UpdateVBA_Index": {
+					"viewName": "Template.Form_UpdateVBA_Index",
+					"viewId": "Form_UpdateVBA_Index"
+				},
+				"Form_CloseCRDT_Index": {
+					"viewName": "Template.Form_CloseCRDT_Index",
+					"viewId": "Form_CloseCRDT_Index"
+				},
+				"Form_ReOpenCRDT_Index": {
+					"viewName": "Template.Form_ReOpenCRDT_Index",
+					"viewId": "Form_ReOpenCRDT_Index"
+				}
+			}
+		}
+	}
+}

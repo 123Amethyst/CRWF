@@ -1,0 +1,125 @@
+<mvc:View
+    height="100%"
+    controllerName="crdt.wf.ui5.controller.SystemSettings.SalesAdminDept"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:t="sap.ui.table"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:tableHelp="custom.tableHelp"
+    xmlns:customInput="custom.customInput"
+    xmlns:core="sap.ui.core">
+  <Page
+    showHeader="false" 
+    id="salesAdminDeptList">
+    <l:BlockLayout background="Dashboard">
+      <l:BlockLayoutRow>
+        <l:BlockLayoutCell>
+          <Toolbar>
+            <Title level="H2" titleStyle="H2" text="{i18n>xtit.SalesAdminRegionDeptList}" class="formTitle"/>
+            <ToolbarSpacer/>
+            <Button
+                text="{i18n>xbut.buttonAdd}"
+                press=".onDialogCreate"
+                class="DefaultButton AutoButton"/>
+          </Toolbar>
+          <tableHelp:TableFilter tableFor="table"
+                                 search="._onRefresh"/>
+          <t:Table
+              id="table"
+		          visibleRowCount="10"
+              rowActionCount="2"
+              selectionMode="None"
+              class="TableClass">
+            <t:rowActionTemplate>
+              <t:RowAction>
+                <t:items>
+                  <!--<t:RowActionItem
+                    icon="sap-icon://edit"
+                    visible="{IsActive}"
+                    text="{i18n>xbut.buttonEdit}"
+                    press=".onEdit" />-->
+                  <t:RowActionItem
+                    icon="sap-icon://delete"
+                    text="{i18n>xbut.buttonDelete}"
+                    visible="{IsActive}"
+                    type="Delete"
+                    press=".onDelete" />
+                </t:items>
+              </t:RowAction>
+            </t:rowActionTemplate>
+            <t:columns>
+              <!--公司编码-->
+              <t:Column width="10rem">
+                <Label text="{i18n>xfld.CompanyCode}"/>
+                <t:template>
+                  <Text text="{CompanyCode}"/>
+                </t:template>
+              </t:Column>
+              <!--销售管理员-->
+              <t:Column width="15rem"  filterProperty="SalesAdmin" showFilterMenuEntry="false">
+                <Label text="{i18n>xfld.SalesAdmin}" />
+                <t:template>
+                  <Text text="{SalesAdmin}"/>
+                </t:template>
+              </t:Column>
+              <!--区域-->
+              <t:Column width="15rem"  filterProperty="Region" showFilterMenuEntry="false">
+                <Label text="{i18n>xfld.Region}" />
+                <t:template>
+                  <Text text="{Region}"/>
+                </t:template>
+              </t:Column>
+              <!--部门编码-->
+              <t:Column width="20rem"  filterProperty="DeptCode" showFilterMenuEntry="false">
+                <Label text="{i18n>xfld.DeptCode}" />
+                <t:template>
+                  <Text text="{DeptCode}"/>
+                </t:template>
+              </t:Column>
+              <!--部门名称-->
+              <t:Column width="10rem" filterProperty="DeptName" showFilterMenuEntry="false">
+                <Label text="{i18n>xfld.DeptName}" />
+                <t:template>
+                  <Text text="{DeptName}"/>
+                </t:template>                                                                                                      
+              </t:Column>
+             <!--创建人-->
+              <t:Column width="10rem">
+                <Label text="{i18n>xfld.CreateUserId}" />
+                <t:template>
+                  <Text text="{CreateUserId}"/>
+                </t:template>
+              </t:Column>
+            <!--创建时间-->
+              <t:Column width="10rem">
+                <Label text="{i18n>xfld.CreateDate}" />
+                <t:template>
+                  <Text text="{CreateDate}"/>
+                </t:template>
+              </t:Column>
+              <!--修改人--><!--
+              <t:Column width="20rem">
+                <Label text="{i18n>xfld.UpdateUserId}" />
+                <t:template>
+                  <Text text="{UpdateUserId}"/>
+                </t:template>
+              </t:Column>
+              --><!--修改时间--><!--
+              <t:Column width="10rem">
+                <Label text="{i18n>xfld.UpdateDate}" />
+                <t:template>
+                  <Text text="{UpdateDate}"/>
+                </t:template>
+              </t:Column>-->
+            </t:columns>
+            <t:footer>
+              <tableHelp:TablePage tableFor="table"
+                                        loadTable="_onRefresh"/>
+            </t:footer>
+          </t:Table>
+        </l:BlockLayoutCell>
+      </l:BlockLayoutRow>
+    </l:BlockLayout>
+  </Page>
+</mvc:View>

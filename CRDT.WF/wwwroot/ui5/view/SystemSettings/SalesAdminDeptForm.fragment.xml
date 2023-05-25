@@ -1,0 +1,131 @@
+﻿<core:FragmentDefinition
+	xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt"
+  xmlns:t="sap.ui.table"
+  xmlns:customInput="custom.customInput">
+  <Dialog
+		class="Padding DialogClass"
+		title="{i18n>xtit.SalesAdminRegionDeptForm}"
+    contentWidth="750px"
+    id="dialog_salesAdminDeptForm">
+    <content>
+      <VBox id="FormDetails">
+        <FlexBox
+            renderType="List"
+            alignItems="Center"
+            wrap="Wrap"
+            class="FlexBoxClass">
+          <!--公司编码-->
+          <VBox>
+            <Label text="{i18n>xfld.CompanyCode}" labelFor="CompanyCode"/>
+            <Select
+              id="CompanyCode"
+              required="true"
+              selectedKey="{FormData>/CompanyCode}"
+              class="SelectClass Rimless"
+              items="{
+					    path: 'PlantData>/PlantModel'
+				      }"
+              change="onPlantChange">
+              <core:Item key="{PlantData>DCODE}" text="{PlantData>DNAME}({PlantData>DCODE})"/>
+            </Select>
+            <layoutData>
+              <FlexItemData baseSize="45%" />
+            </layoutData>
+          </VBox>
+          <!--销售管理员-->
+          <VBox>
+            <Label text="{i18n>xfld.SalesAdmin}" labelFor="SalesAdmin"/>
+            <Select
+              id="SalesAdmin"
+              required="true"
+              selectedKey="{FormData>/SalesAdmin}"
+              class="SelectClass Rimless"
+              items="{
+					    path: 'SalesAdmin>/SalesAdminModel'
+				      }">
+              <core:Item key="{SalesAdmin>ZZSALESADMIN}" text="{SalesAdmin>ZZSANAME}"/>
+            </Select>
+            <layoutData>
+              <FlexItemData baseSize="45%" />
+            </layoutData>
+          </VBox>
+          <!--区域-->
+          <VBox>
+            <Label text="{i18n>xfld.Region}" />
+            <Input
+              id="regionInput"
+              name="Region"
+              value="{FormData>/Region}"
+              autocomplete="false"
+              class="InputClass"/>
+            <layoutData>
+              <FlexItemData baseSize="45%" />
+            </layoutData>
+          </VBox>
+          <!--公司编码-->
+          <VBox>
+            <Label/>
+            <Input
+              id="companyCodeInput"
+              name="CompanyCode"
+              value="{FormData>/CompanyCode}"
+              autocomplete="false"
+              class="InputClass"
+              visible="false"/>
+            <layoutData>
+              <FlexItemData baseSize="5%" />
+            </layoutData>
+          </VBox>
+          <!--部门编码-->
+          <VBox>
+            <Label/>
+            <Input
+              id="DeptCodeInput"
+              name="DeptCode"
+              value="{FormData>/DeptCode}"
+              autocomplete="false"
+              class="InputClass"
+              visible="false"/>
+            <layoutData>
+              <FlexItemData baseSize="5%" />
+            </layoutData>
+          </VBox>
+          <!--部门名称-->
+          <VBox>
+            <Label/>
+            <Input
+              id="DeptNameInput"
+              name="DeptName"
+              value="{FormData>/DeptName}"
+              autocomplete="false"
+              class="InputClass"
+              visible="false"/>
+            <layoutData>
+              <FlexItemData baseSize="5%" />
+            </layoutData>
+          </VBox>
+        <!--Type-->
+          <VBox>
+            <Label/>
+            <Input
+              id="Type"
+              class="InputClass"
+              visible="false"/>
+            <layoutData>
+              <FlexItemData baseSize="5%" />
+            </layoutData>
+          </VBox>
+        </FlexBox>
+      </VBox>
+    </content>
+    <beginButton>
+      <Button text="{i18n>xbut.buttonSubmit}" press=".onSubmit"  type="Emphasized" class="LightButton"/>
+    </beginButton>
+    <endButton>
+      <Button text="{i18n>xbut.buttonCancel}" press=".onCancel" class="DarkButton"/>
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>

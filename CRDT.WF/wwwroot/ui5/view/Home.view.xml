@@ -1,0 +1,93 @@
+<mvc:View
+	controllerName="crdt.wf.ui5.controller.Home"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+  xmlns:tnt="sap.tnt"
+  height="100%">
+
+  <tnt:ToolPage id="Menu">
+    <tnt:header>
+      <tnt:ToolHeader style="Clear" class="HomeTool">
+        <Button
+					id="sideNavigationToggleButton"
+					icon="sap-icon://menu2"
+					type="Transparent"
+          tooltip="{i18n>xbut.ShowOrHide}"
+          class="HomeToolButton"
+					press=".onSideNavButtonPress">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow" />
+          </layoutData>
+        </Button>
+        <ToolbarSpacer width="20px" />
+        <Image src="../../../img/Logo.png" width="9rem" class="HomeToolButton" press="onHomePress">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="Low" />
+          </layoutData>
+        </Image>
+        <tnt:ToolHeaderUtilitySeparator />
+        <ToolbarSpacer>
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px" />
+          </layoutData>
+        </ToolbarSpacer>
+        <Button id="user_detail" text="User Name" class="HomeToolButton" type="Transparent" press="handleUserNamePress" ariaHasPopup="Menu">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow" />
+          </layoutData>
+        </Button>
+      </tnt:ToolHeader>
+    </tnt:header>
+    <tnt:sideContent>
+      <tnt:SideNavigation
+         expanded="true"
+         selectedKey="{menu>/selectedKey}"
+         itemSelect=".onItemSelect"
+         class="SideNavigationClass">
+        <tnt:NavigationList id="menuList" class="NavigationListClass">
+        </tnt:NavigationList>
+      </tnt:SideNavigation>
+    </tnt:sideContent>
+    <tnt:mainContents>
+      <NavContainer id="pageContainer" initialPage="Home">
+        <pages>
+          <ScrollContainer
+						id="Home"
+						horizontal="false"
+						vertical="true"
+						height="100%">
+            <mvc:XMLView viewName="crdt.wf.ui5.view.UserHome"/>
+          </ScrollContainer>
+          <!--<ScrollContainer
+           id="Page_CreditWF_Initiation"
+           horizontal="false"
+           vertical="true"
+           height="100%">
+            <mvc:XMLView viewName="crdt.wf.ui5.view.CreditWF.Initiation"/>
+          </ScrollContainer>
+          <ScrollContainer
+          id="Page_CreditWF_ToDoList"
+          horizontal="false"
+          vertical="true"
+          height="100%">
+            <mvc:XMLView viewName="crdt.wf.ui5.view.CreditWF.ToDoList"/>
+          </ScrollContainer>
+          <ScrollContainer
+          id="Page_SystemSettings_SalesAdminDept"
+          horizontal="false"
+          vertical="true"
+          height="100%">
+            <mvc:XMLView viewName="crdt.wf.ui5.view.SystemSettings.SalesAdminDept"/>
+          </ScrollContainer>
+         <ScrollContainer 
+          id="Page_SystemSettings_DelegationSetting"
+          horizontal="false"
+          vertical="true"
+          height="100%">
+            <mvc:XMLView viewName="crdt.wf.ui5.view.SystemSettings.DelegationSetting"/>
+          </ScrollContainer>-->
+        </pages>
+      </NavContainer>
+    </tnt:mainContents>
+  </tnt:ToolPage>
+</mvc:View>

@@ -1,0 +1,299 @@
+<mvc:View
+    height="100%"
+    controllerName="crdt.wf.ui5.controller.CreditWF.Initiation"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+	  xmlns:l="sap.ui.layout"
+	  xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table"
+	  xmlns:core="sap.ui.core"
+    xmlns:customInput="custom.customInput">
+  <Page
+    id="page"
+    showHeader="false">
+    <l:BlockLayout background="Dashboard" class="Page">
+      <l:BlockLayoutRow class="Page">
+        <l:BlockLayoutCell>
+          <f:Form
+            editable="true"
+            class="FormClass">
+            <f:title>
+              <core:Title text="{i18n>ApprovalFlow_Initiation_Title}"
+                          class="TitleClass"/>
+            </f:title>
+            <f:layout>
+              <f:ResponsiveGridLayout
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="3"
+                emptySpanL="3"
+                emptySpanM="3"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="true" />
+            </f:layout>
+          </f:Form>
+          <VBox>
+            <FlexBox
+                id="FormApprovalFlow_Initiation"
+                renderType="List"
+                alignItems="Center"
+                wrap="Wrap">
+              <HBox height="16px">
+                <layoutData>
+                  <FlexItemData baseSize="100%" />
+                </layoutData>
+              </HBox>
+              
+              <!--厂房-->
+              <HBox alignItems="Start" justifyContent="Center">
+                <VBox alignItems="End">
+                  <Label text="{i18n>ApprovalFlow_Initiation_Field_Plant}:" labelFor="Plant"/>
+                  <layoutData>
+                    <FlexItemData baseSize="6%" maxWidth="6%"/>
+                  </layoutData>
+                </VBox>
+                <VBox>
+                  <layoutData>
+                    <FlexItemData baseSize="1%"/>
+                  </layoutData>
+                </VBox>
+                <VBox>
+                   <Select 
+                        id="Plant"
+                        required="true"
+                        selectedKey="{FormData>/BUKRS}"
+                        class="SelectClass Rimless"
+                        items="{
+					                  path: 'PlantData>/PlantModel'
+				                  }"
+                        change="onPlantChange">
+                      <core:Item key="{PlantData>DCODE}" text="{PlantData>DCODE}-{PlantData>DNAME}"/>
+                      </Select>
+                  <layoutData>
+                    <FlexItemData baseSize="50%" />
+                  </layoutData>
+                </VBox>
+                <layoutData>
+                  <FlexItemData baseSize="100%" />
+                </layoutData>
+              </HBox>
+              <!--提交人-->
+              <HBox alignItems="Start" justifyContent="Center">
+                <VBox alignItems="End">
+                  <Label text="{i18n>ApprovalFlow_Initiation_Field_Initiator}:" labelFor="Initiator" visible="false"/>
+                  <layoutData>
+                    <FlexItemData baseSize="6%" maxWidth="6%"/>
+                  </layoutData>
+                </VBox>
+                <VBox>
+                  <layoutData>
+                    <FlexItemData baseSize="1%" />
+                  </layoutData>
+                </VBox>
+                <VBox>
+                  <Input id="Initiator"
+                         value="{FormData>/InitiatorAccount} - {FormData>/InitiatorAccountName}"
+                         required="true"
+                         enabled="false"
+                         visible="false"
+                         autocomplete="false"
+                         editable="false"
+                         class="InputClass Rimless" />
+                  <layoutData>
+                    <FlexItemData baseSize="50%" />
+                  </layoutData>
+                </VBox>
+                <layoutData>
+                  <FlexItemData baseSize="100%" />
+                </layoutData>
+              </HBox>
+              <!--申请人-->
+              <HBox alignItems="Start" justifyContent="Center">
+                <VBox alignItems="End">
+                  <Label text="{i18n>ApprovalFlow_Initiation_Field_Applicant}:" labelFor="Applicant" visible="false"/>
+                  <layoutData>
+                    <FlexItemData baseSize="6%" maxWidth="6%"/>
+                  </layoutData>
+                </VBox>
+                <VBox>
+                  <layoutData>
+                    <FlexItemData baseSize="1%" />
+                  </layoutData>
+                </VBox>
+                <VBox>
+                  <customInput:TableInput id="Applicant"
+                                          required="true"
+                                          name="ApplicantUserId"
+                                          visible="false"
+                                          value="{FormData>/ApplicantUserId}"
+                                          showValue="{FormData>/ApplicantAccount} - {FormData>/ApplicantAccountName}"
+                                          tableTitle="{i18n>TableSelect_Initiation_Title}"
+                                          tableRequired="true"
+                                          firstSearch="true"
+                                          tableBinds="{
+                                              UserId:'FormData>/ApplicantUserId',
+                                              Account:'FormData>/ApplicantAccount',
+                                              AccountName:'FormData>/ApplicantAccountName',
+                                              CostCenter:'FormData>/Department',
+                                              CostCenterName:'FormData>/DepartmentName'}"
+                                          url="/ApprovalFlow/GetUserDDList"
+                                          attachedData="{bukrs:'@@FormData>/BUKRS','userType':'ApplicantUser'}"
+                                          rowSelectionChange="ApplicantSelectionChange"
+                                          styleClass="InputClass Rimless">
+                    <t:Column width="15rem"
+                              showFilterMenuEntry="false"
+                              filterProperty="Account">
+                      <Label text="{i18n>TableSelect_Initiation_Field0}" />
+                      <t:template>
+                        <Text text="{Account}"/>
+                      </t:template>
+                    </t:Column>
+                    <t:Column width="auto"
+                              showFilterMenuEntry="false"
+                              filterProperty="AccountName">
+                      <Label text="{i18n>TableSelect_Initiation_Field1}" />
+                      <t:template>
+                        <Text text="{AccountName}"/>
+                      </t:template>
+                    </t:Column>
+                  </customInput:TableInput>
+                <layoutData>
+                    <FlexItemData baseSize="50%" />
+                  </layoutData>
+                </VBox>
+                <layoutData>
+                  <FlexItemData baseSize="100%" />
+                </layoutData>
+              </HBox>
+              <!--申请部门-->
+              <HBox alignItems="Start" justifyContent="Center">
+                <VBox alignItems="End">
+                  <Label text="{i18n>ApprovalFlow_Initiation_Field_Department}:" labelFor="DepartmentName" visible="false"/>
+                  <layoutData>
+                    <FlexItemData baseSize="6%" maxWidth="6%"/>
+                  </layoutData>
+                </VBox>
+                <VBox>
+                  <layoutData>
+                    <FlexItemData baseSize="1%" />
+                  </layoutData>
+                </VBox>
+                <VBox>
+                  <Input id="DepartmentName"
+                         value="{FormData>/Department} - {FormData>/DepartmentName}"
+                         required="true"
+                         visible="false"
+                         autocomplete="false"
+                         enabled="false"
+                         class="InputClass Rimless"/>
+                  <layoutData>
+                    <FlexItemData baseSize="50%" />
+                  </layoutData>
+                </VBox>
+                <layoutData>
+                  <FlexItemData baseSize="100%" />
+                </layoutData>
+              </HBox>
+              <!--表单操作-->
+              <HBox alignItems="Start" justifyContent="Center">
+                <VBox alignItems="End">
+                  <Label text="{i18n>ApprovalFlow_Initiation_Field_ApplicationAction}:" labelFor="ApplicationAction"/>
+                  <layoutData>
+                    <FlexItemData baseSize="6%" maxWidth="6%"/>
+                  </layoutData>
+                </VBox>
+                <VBox>
+                  <layoutData>
+                    <FlexItemData baseSize="1%" />
+                  </layoutData>
+                </VBox>
+                <VBox>
+                   <Select 
+                      id="ApplicationAction" 
+                      required="true"
+                      selectedKey="{FormData>/AppType}"
+                      class="SelectClass Rimless"
+                      items="{
+					                  path: 'AppTypeData>/AppTypeModel'
+				                  }">
+                      <core:Item key="{AppTypeData>DCODE}" text="{AppTypeData>DNAME}"/>
+                      </Select>
+                  <layoutData>
+                    <FlexItemData baseSize="50%" />
+                  </layoutData>
+                </VBox>
+                <layoutData>
+                  <FlexItemData baseSize="100%" />
+                </layoutData>
+              </HBox>
+              <!--申请说明-->
+              <HBox alignItems="Start" justifyContent="Center">
+                <VBox alignItems="End">
+                  <Label text="{i18n>ApprovalFlow_Initiation_Field_Details}:" labelFor="Details"/>
+                  <layoutData>
+                    <FlexItemData baseSize="6%" maxWidth="6%"/>
+                  </layoutData>
+                </VBox>
+                <VBox>
+                  <layoutData>
+                    <FlexItemData baseSize="1%" />
+                  </layoutData>
+                </VBox>
+                <VBox>
+                  <TextArea
+                        id="Details"
+                        value="{FormData>/Details}"
+                        required="true"
+                        maxLength="200"
+                        valueLiveUpdate="false"
+                        class="TextAreaClass Rimless"/>
+                  <layoutData>
+                    <FlexItemData baseSize="50%" />
+                  </layoutData>
+                </VBox>
+                <layoutData>
+                  <FlexItemData baseSize="100%" />
+                </layoutData>
+              </HBox>
+
+
+              <!--按钮-->
+              <HBox height="16px">
+                <layoutData>
+                  <FlexItemData baseSize="100%" />
+                </layoutData>
+              </HBox>
+              <HBox alignItems="Start" justifyContent="Center">
+                <VBox>
+                  <layoutData>
+                    <FlexItemData baseSize="8%" maxWidth="8%"/>
+                  </layoutData>
+                </VBox>
+                <VBox alignItems="End">
+                  <Button text="{i18n>Buttons_Submit}" press="onSubmitPress" class="LightButton"/>
+                  <layoutData>
+                    <FlexItemData baseSize="13%" />
+                  </layoutData>
+                </VBox>
+                <VBox>
+                  <layoutData>
+                    <FlexItemData baseSize="1%" />
+                  </layoutData>
+                </VBox>
+                <layoutData>
+                  <FlexItemData baseSize="100%" />
+                </layoutData>
+              </HBox>
+            </FlexBox>
+          </VBox>
+        </l:BlockLayoutCell>
+      </l:BlockLayoutRow>
+    </l:BlockLayout>
+  </Page>
+</mvc:View>

@@ -1,0 +1,47 @@
+<mvc:View
+  height="100%"
+	controllerName="crdt.wf.ui5.controller.Template.Form_OpenCRDT_Index"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+  xmlns:l="sap.ui.layout">
+  
+  <l:BlockLayout background="Dashboard" class="BlockLayoutClass">
+    <l:BlockLayoutRow class="BlockLayoutRowClass">
+      <l:BlockLayoutCell>
+        <Page id="FormBody" backgroundDesign="Transparent">
+          <headerContent>
+            <OverflowToolbar width="100%">
+              <content>
+                <Title id="Form_Approve_Title" text="" class="TitleClass"/>
+                <Title text="" id="Process" class="SubTitleClass"/>
+                <ToolbarSpacer/>
+                <Label id="Form_HTDPUA_ApproDesc_Label" text="" labelFor="Form_HTDPUA_ApproDesc" visible="false"/>
+                <Input id="Form_HTDPUA_ApproDesc" width="300px" value="" visible="false"/>
+                <Button id="Form_HTDPUA_Approve" text="{i18n>Buttons_Approve}"  press="onApprovePress" visible="false" class="LightButton"/>
+                <Button id="Form_HTDPUA_Decline" text="{i18n>Buttons_Decline}"  press="onDeclinePress" visible="false" class="DarkButton"/>
+                <Button id="Form_HTDPUA_Submit" text="{i18n>Buttons_Submit}"  press="onSubmitPress" visible="false" class="LightButton"/>
+                <Button id="Form_HTDPUA_SaveDraft" text="{i18n>Buttons_SaveDraft}"  press="onSaveDraftPress" visible="false"  class="DarkButton"/>
+                <Button id="Form_HTDPUA_Delete" text="{i18n>Buttons_Delete}"  press="onDeletePress" visible="false" class="DarkButton"/>
+                <Button id="Form_HTDPUA_CallBack" text="{i18n>Buttons_CallBack}"  press="onCallBackPress" visible="false" class="DarkButton"/>
+                <Button id="Form_HTDPUA_Cancel" text="{i18n>Buttons_Cancel}"  press="onCancelPress" class="DarkButton"/>
+              </content>
+            </OverflowToolbar>
+          </headerContent>
+          <content>
+            <VBox id="Header" />
+
+            <VBox id="PayerInformation"/>
+
+            <VBox id="ARInformation" />
+
+            <VBox id="BRInformation" />
+
+            <HBox id="EndContent" class="HBoxClass" />
+          </content>
+        </Page>
+        
+      </l:BlockLayoutCell>
+    </l:BlockLayoutRow>
+  </l:BlockLayout>
+
+</mvc:View>
